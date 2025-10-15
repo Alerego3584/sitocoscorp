@@ -1,0 +1,1185 @@
+{
+  "category": "corporate",
+  "generatedAt": "2025-10-15T15:32:26.413Z",
+  "count": 5,
+  "sets": [
+    {
+      "slug": "jabergamo",
+      "title": "Jabergamo",
+      "description": "",
+      "category": "Corporate",
+      "date": "2025-10-15T10:01:04.282Z",
+      "count": 47,
+      "coverImage": {
+        "slug": "20250604-122208-Jabergamo-Hq-2025",
+        "title": "JA Finals 2025 - Jun 4, 2025",
+        "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-122208-Jabergamo-Hq-2025.jpg",
+        "full": "/images/corporate/featured/jabergamo/full/20250604-122208-Jabergamo-Hq-2025.jpg"
+      },
+      "images": [
+        {
+          "slug": "20250604-122208-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-122208-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-122208-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-124440-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-124440-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-124440-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-124446-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-124446-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-124446-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-124557-Armando-Persico-2025",
+          "title": "Armando Persico - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-124557-Armando-Persico-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-124557-Armando-Persico-2025.jpg"
+        },
+        {
+          "slug": "20250604-133721-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-133721-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-133721-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-133808-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-133808-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-133808-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-135357-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-135357-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-135357-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-135523-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-135523-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-135523-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-140353-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-140353-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-140353-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-140732-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-140732-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-140732-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-140910-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-140910-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-140910-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-140919-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-140919-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-140919-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-140931-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-140931-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-140931-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-141138-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-141138-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-141138-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-151659-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-151659-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-151659-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-152502-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-152502-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-152502-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-152614-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-152614-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-152614-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-152756-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-152756-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-152756-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-152851-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-152851-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-152851-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-153232-Armando-Persico-2025",
+          "title": "Armando Persico - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-153232-Armando-Persico-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-153232-Armando-Persico-2025.jpg"
+        },
+        {
+          "slug": "20250604-154503-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-154503-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-154503-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-154711-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-154711-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-154711-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-160730-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-160730-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-160730-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250604-174718-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 4, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250604-174718-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250604-174718-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-093045-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-093045-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-093045-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-093552-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-093552-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-093552-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-093943-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-093943-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-093943-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-100202-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-100202-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-100202-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-100333-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-100333-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-100333-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-100411-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-100411-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-100411-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-102700-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-102700-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-102700-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-102829-Miriam-Cresta-2025",
+          "title": "Miriam Cresta - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-102829-Miriam-Cresta-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-102829-Miriam-Cresta-2025.jpg"
+        },
+        {
+          "slug": "20250605-103159-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-103159-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-103159-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-103311-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-103311-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-103311-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-103359-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-103359-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-103359-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-124424-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-124424-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-124424-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-140712-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-140712-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-140712-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-142303-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-142303-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-142303-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-142947-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-142947-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-142947-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-143215-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-143215-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-143215-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-154255-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-154255-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-154255-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-154340-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-154340-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-154340-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-160307-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-160307-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-160307-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-160640-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-160640-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-160640-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-160825-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-160825-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-160825-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-161020-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-161020-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-161020-Jabergamo-Hq-2025.jpg"
+        },
+        {
+          "slug": "20250605-161202-Jabergamo-Hq-2025",
+          "title": "JA Finals 2025 - Jun 5, 2025",
+          "thumbnail": "/images/corporate/featured/jabergamo/thumbnails/20250605-161202-Jabergamo-Hq-2025.jpg",
+          "full": "/images/corporate/featured/jabergamo/full/20250605-161202-Jabergamo-Hq-2025.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "mday2025",
+      "title": "Mday2025",
+      "description": "",
+      "category": "Corporate",
+      "date": "2025-10-15T10:02:07.019Z",
+      "count": 80,
+      "coverImage": {
+        "slug": "20250531-092119-Mday2025-Lhq-2025",
+        "title": "Marconi's Day - May 31, 2025",
+        "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-092119-Mday2025-Lhq-2025.jpg",
+        "full": "/images/corporate/featured/mday2025/full/20250531-092119-Mday2025-Lhq-2025.jpg"
+      },
+      "images": [
+        {
+          "slug": "20250531-092119-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-092119-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-092119-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-093838-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-093838-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-093838-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-094618-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-094618-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-094618-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-095323-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-095323-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-095323-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-095552-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-095552-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-095552-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-095652-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-095652-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-095652-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-100151-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-100151-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-100151-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-100230-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-100230-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-100230-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-100341-Selenia-Scinaldi-2025",
+          "title": "Selenia Scinaldi - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-100341-Selenia-Scinaldi-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-100341-Selenia-Scinaldi-2025.jpg"
+        },
+        {
+          "slug": "20250531-100959-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-100959-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-100959-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-102104-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-102104-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-102104-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-104803-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-104803-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-104803-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-105236-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-105236-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-105236-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-105615-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-105615-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-105615-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-105753-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-105753-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-105753-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-105858-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-105858-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-105858-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-105917-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-105917-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-105917-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-112927-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-112927-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-112927-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-112953-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-112953-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-112953-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-113113-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-113113-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-113113-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-113211-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-113211-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-113211-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-113609-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-113609-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-113609-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-113943-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-113943-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-113943-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-114521-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-114521-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-114521-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-115810-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-115810-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-115810-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-120550-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-120550-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-120550-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-120900-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-120900-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-120900-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-121746-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-121746-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-121746-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-121902-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-121902-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-121902-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-122038-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-122038-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-122038-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-122052-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-122052-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-122052-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-122129-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-122129-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-122129-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-122226-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-122226-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-122226-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-122238-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-122238-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-122238-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-122443-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-122443-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-122443-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-122637-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-122637-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-122637-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-122716-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-122716-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-122716-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-123705-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-123705-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-123705-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-124057-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-124057-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-124057-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-124157-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-124157-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-124157-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-124533-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-124533-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-124533-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-124616-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-124616-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-124616-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-124732-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-124732-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-124732-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-124851-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-124851-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-124851-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-124939-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-124939-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-124939-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-125033-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-125033-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-125033-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-125051-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-125051-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-125051-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-125446-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-125446-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-125446-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-125539-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-125539-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-125539-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-125605-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-125605-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-125605-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-125725-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-125725-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-125725-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-125831-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-125831-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-125831-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-125952-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-125952-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-125952-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-130027-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-130027-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-130027-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-130134-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-130134-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-130134-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-130221-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-130221-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-130221-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-130614-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-130614-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-130614-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-130810-Hegi-Duhanxhiu-2025",
+          "title": "Hegi Duhanxhiu - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-130810-Hegi-Duhanxhiu-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-130810-Hegi-Duhanxhiu-2025.jpg"
+        },
+        {
+          "slug": "20250531-130931-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-130931-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-130931-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-131055-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-131055-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-131055-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-131201-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-131201-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-131201-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-131322-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-131322-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-131322-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-131506-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-131506-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-131506-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-131609-Emanuele-Ucciero-2025",
+          "title": "Emanuele Ucciero - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-131609-Emanuele-Ucciero-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-131609-Emanuele-Ucciero-2025.jpg"
+        },
+        {
+          "slug": "20250531-131721-Emanuele-Ucciero-2025",
+          "title": "Emanuele Ucciero - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-131721-Emanuele-Ucciero-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-131721-Emanuele-Ucciero-2025.jpg"
+        },
+        {
+          "slug": "20250531-131841-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-131841-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-131841-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-132002-Selenia-Scinaldi-2025",
+          "title": "Selenia Scinaldi - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-132002-Selenia-Scinaldi-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-132002-Selenia-Scinaldi-2025.jpg"
+        },
+        {
+          "slug": "20250531-132047-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-132047-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-132047-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-132203-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-132203-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-132203-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-132416-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-132416-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-132416-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-132525-Selenia-Scinaldi-2025",
+          "title": "Selenia Scinaldi - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-132525-Selenia-Scinaldi-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-132525-Selenia-Scinaldi-2025.jpg"
+        },
+        {
+          "slug": "20250531-132618-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-132618-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-132618-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-132759-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-132759-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-132759-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-132919-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-132919-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-132919-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-133139-Selenia-Scinaldi-2025",
+          "title": "Selenia Scinaldi - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-133139-Selenia-Scinaldi-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-133139-Selenia-Scinaldi-2025.jpg"
+        },
+        {
+          "slug": "20250531-133318-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-133318-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-133318-Mday2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250531-133352-Alessio-Amato-2025",
+          "title": "Alessio Amato - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-133352-Alessio-Amato-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-133352-Alessio-Amato-2025.jpg"
+        },
+        {
+          "slug": "20250531-133441-Edoardo-Montegazza-2025",
+          "title": "Edoardo Montegazza - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-133441-Edoardo-Montegazza-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-133441-Edoardo-Montegazza-2025.jpg"
+        },
+        {
+          "slug": "20250531-133713-Edoardo-Montegazza-2025",
+          "title": "Edoardo Montegazza - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-133713-Edoardo-Montegazza-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-133713-Edoardo-Montegazza-2025.jpg"
+        },
+        {
+          "slug": "20250531-133738-Mday2025-Lhq-2025",
+          "title": "Marconi's Day - May 31, 2025",
+          "thumbnail": "/images/corporate/featured/mday2025/thumbnails/20250531-133738-Mday2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/mday2025/full/20250531-133738-Mday2025-Lhq-2025.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "microsoft",
+      "title": "Microsoft",
+      "description": "",
+      "category": "Corporate",
+      "date": "2025-10-15T10:02:13.670Z",
+      "count": 19,
+      "coverImage": {
+        "slug": "20250609-094829-Microsoftjun9-Lhq-2025",
+        "title": "Microsoft Event - Jun 9, 2025",
+        "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-094829-Microsoftjun9-Lhq-2025.jpg",
+        "full": "/images/corporate/featured/microsoft/full/20250609-094829-Microsoftjun9-Lhq-2025.jpg"
+      },
+      "images": [
+        {
+          "slug": "20250609-094829-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-094829-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-094829-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-094852-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-094852-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-094852-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-094955-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-094955-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-094955-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-095025-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-095025-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-095025-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-095533-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-095533-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-095533-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-095538-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-095538-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-095538-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-095612-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-095612-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-095612-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-095621-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-095621-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-095621-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-100649-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-100649-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-100649-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-100736-Selenia-Scinaldi-2025",
+          "title": "Selenia Scinaldi - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-100736-Selenia-Scinaldi-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-100736-Selenia-Scinaldi-2025.jpg"
+        },
+        {
+          "slug": "20250609-100851-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-100851-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-100851-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-102528-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-102528-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-102528-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-102613-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-102613-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-102613-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-102652-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-102652-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-102652-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-103058-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-103058-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-103058-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-103357-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-103357-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-103357-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-111119-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-111119-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-111119-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-111202-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-111202-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-111202-Microsoftjun9-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250609-111338-Microsoftjun9-Lhq-2025",
+          "title": "Microsoft Event - Jun 9, 2025",
+          "thumbnail": "/images/corporate/featured/microsoft/thumbnails/20250609-111338-Microsoftjun9-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/microsoft/full/20250609-111338-Microsoftjun9-Lhq-2025.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "saloneaziendale",
+      "title": "Saloneaziendale",
+      "description": "",
+      "category": "Corporate",
+      "date": "2025-10-15T10:02:25.361Z",
+      "count": 25,
+      "coverImage": {
+        "slug": "20250606-115102-Salone2025-Lhq-2025",
+        "title": "Salone Aziendale - Jun 6, 2025",
+        "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115102-Salone2025-Lhq-2025.jpg",
+        "full": "/images/corporate/featured/saloneaziendale/full/20250606-115102-Salone2025-Lhq-2025.jpg"
+      },
+      "images": [
+        {
+          "slug": "20250606-115102-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115102-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115102-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115124-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115124-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115124-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115220-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115220-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115220-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115240-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115240-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115240-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115545-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115545-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115545-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115624-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115624-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115624-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115645-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115645-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115645-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115659-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115659-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115659-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115717-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115717-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115717-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115726-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115726-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115726-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115846-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115846-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115846-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-115944-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-115944-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-115944-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-120037-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-120037-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-120037-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-120137-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-120137-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-120137-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-122640-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-122640-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-122640-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-122958-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-122958-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-122958-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-123017-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-123017-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-123017-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-123035-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-123035-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-123035-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-123313-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-123313-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-123313-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-123537-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-123537-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-123537-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-123901-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-123901-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-123901-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-124105-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-124105-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-124105-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-124222-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-124222-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-124222-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-124450-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-124450-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-124450-Salone2025-Lhq-2025.jpg"
+        },
+        {
+          "slug": "20250606-124508-Salone2025-Lhq-2025",
+          "title": "Salone Aziendale - Jun 6, 2025",
+          "thumbnail": "/images/corporate/featured/saloneaziendale/thumbnails/20250606-124508-Salone2025-Lhq-2025.jpg",
+          "full": "/images/corporate/featured/saloneaziendale/full/20250606-124508-Salone2025-Lhq-2025.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "techtint",
+      "title": "Techtint",
+      "description": "",
+      "category": "Corporate",
+      "date": "2025-10-15T10:02:28.127Z",
+      "count": 12,
+      "coverImage": {
+        "slug": "20250923-180201-Ups-Techtint-2025",
+        "title": "Tech Tint Event - Sep 23, 2025",
+        "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-180201-Ups-Techtint-2025.jpg",
+        "full": "/images/corporate/featured/techtint/full/20250923-180201-Ups-Techtint-2025.jpg"
+      },
+      "images": [
+        {
+          "slug": "20250923-180201-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-180201-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-180201-Ups-Techtint-2025.jpg"
+        },
+        {
+          "slug": "20250923-182214-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-182214-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-182214-Ups-Techtint-2025.jpg"
+        },
+        {
+          "slug": "20250923-185706-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-185706-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-185706-Ups-Techtint-2025.jpg"
+        },
+        {
+          "slug": "20250923-190700-Armando-Persico-2025",
+          "title": "Armando Persico - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-190700-Armando-Persico-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-190700-Armando-Persico-2025.jpg"
+        },
+        {
+          "slug": "20250923-191010-Selenia-Scinaldi-2025",
+          "title": "Selenia Scinaldi - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-191010-Selenia-Scinaldi-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-191010-Selenia-Scinaldi-2025.jpg"
+        },
+        {
+          "slug": "20250923-192639-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-192639-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-192639-Ups-Techtint-2025.jpg"
+        },
+        {
+          "slug": "20250923-193445-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-193445-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-193445-Ups-Techtint-2025.jpg"
+        },
+        {
+          "slug": "20250923-193502-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-193502-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-193502-Ups-Techtint-2025.jpg"
+        },
+        {
+          "slug": "20250923-193527-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-193527-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-193527-Ups-Techtint-2025.jpg"
+        },
+        {
+          "slug": "20250923-211638-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-211638-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-211638-Ups-Techtint-2025.jpg"
+        },
+        {
+          "slug": "20250923-220519-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-220519-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-220519-Ups-Techtint-2025.jpg"
+        },
+        {
+          "slug": "20250923-222147-Ups-Techtint-2025",
+          "title": "Tech Tint Event - Sep 23, 2025",
+          "thumbnail": "/images/corporate/featured/techtint/thumbnails/20250923-222147-Ups-Techtint-2025.jpg",
+          "full": "/images/corporate/featured/techtint/full/20250923-222147-Ups-Techtint-2025.jpg"
+        }
+      ]
+    }
+  ]
+}
