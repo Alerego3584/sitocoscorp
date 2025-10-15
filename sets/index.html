@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Featured Sets · Alerego.dev</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    'sans': ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        primary: '#f97316',
+                        surface: '#0b0f19'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <div class="relative isolate overflow-hidden">
+        <div class="absolute inset-0 -z-10 bg-gradient-to-br from-purple-600 via-fuchsia-500 to-orange-500"></div>
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.12),transparent_60%)]"></div>
+
+        <header class="px-6 py-8 sm:px-10 lg:px-16">
+            <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6">
+                <a href="/" class="text-lg font-semibold text-white">← Back to Alerego.dev</a>
+                <div class="flex flex-wrap items-center gap-4 text-sm font-medium">
+                    <a href="/sets/" class="rounded-full bg-white/20 px-5 py-2 text-white shadow-lg shadow-purple-500/30 backdrop-blur">Featured Sets</a>
+                    <a href="/cosplay/" class="rounded-full border border-white/20 px-5 py-2 text-white/80 transition hover:border-white hover:text-white">Cosplay</a>
+                    <a href="/corporate/" class="rounded-full border border-white/20 px-5 py-2 text-white/80 transition hover:border-white hover:text-white">Corporate</a>
+                    <a href="mailto:contact@alerego.dev" class="rounded-full border border-white/20 px-5 py-2 text-white/80 transition hover:border-white hover:text-white">Book a shoot</a>
+                </div>
+            </nav>
+
+            <section class="mx-auto mt-16 flex max-w-7xl flex-col gap-10 lg:flex-row lg:items-center">
+                <div class="flex-1 space-y-8">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-white/80">
+                        curated collections
+                    </span>
+                    <h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                        Featured sets that define my artistic vision.
+                    </h1>
+                    <p class="max-w-2xl text-lg leading-relaxed text-white/80">
+                        A carefully selected showcase of signature works spanning cosplay artistry, corporate storytelling, and experimental photography. Each set represents a unique creative journey and collaborative vision.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/80">
+                            <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+                            Dynamic grid layout
+                        </div>
+                        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/80">
+                            <span class="inline-flex h-2 w-2 rounded-full bg-blue-400"></span>
+                            Full-screen immersion
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <main class="mt-16">
+            <div class="px-6 sm:px-10 lg:px-16">
+                <div class="mx-auto max-w-7xl">
+                    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                        <div class="space-y-4">
+                            <p class="text-sm uppercase tracking-[0.35em] text-white/60">Portfolio showcase</p>
+                            <h2 class="text-3xl font-semibold text-white sm:text-4xl">Screen-wide dynamic gallery</h2>
+                            <p class="max-w-2xl text-base text-white/70">Explore each set through an immersive, responsive grid that adapts to your screen. Click any image to enter full-screen viewing mode.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen-wide Dynamic Grid -->
+            <div class="mt-12 min-h-screen">
+                <div id="sets-grid" class="dynamic-grid" data-gallery-grid data-empty-prompt="sets-config.js"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/90 px-6 backdrop-blur-xl">
+        <button aria-label="Close" class="absolute right-6 top-6 text-3xl text-white/70 transition hover:text-white" data-lightbox-close>&times;</button>
+        <button aria-label="Previous" class="absolute left-6 top-1/2 hidden -translate-y-1/2 text-3xl text-white/70 transition hover:text-white sm:block" data-lightbox-prev>&lsaquo;</button>
+        <button aria-label="Next" class="absolute right-6 top-1/2 hidden -translate-y-1/2 text-3xl text-white/70 transition hover:text-white sm:block" data-lightbox-next>&rsaquo;</button>
+        <div class="flex max-h-[85vh] w-full max-w-5xl flex-col items-center">
+            <img id="lightbox-img" alt="Set full view" class="max-h-[75vh] max-w-full rounded-3xl object-contain shadow-2xl" loading="lazy">
+            <p id="caption" class="mt-6 text-center text-lg text-white/80"></p>
+        </div>
+    </div>
+
+    <script src="/scripts/gallery.js"></script>
+    <script src="/scripts/sets-config.js"></script>
+
+    <style>
+        /* Dynamic grid styles */
+        .dynamic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-auto-rows: 200px;
+            gap: 8px;
+            padding: 0;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+
+        .dynamic-grid figure {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            border: none;
+            margin: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dynamic-grid figure:hover {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        /* Random grid item sizes for dynamic layout */
+        .dynamic-grid figure:nth-child(6n+1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .dynamic-grid figure:nth-child(8n+3) {
+            grid-row: span 2;
+        }
+
+        .dynamic-grid figure:nth-child(10n+7) {
+            grid-column: span 2;
+        }
+
+        .dynamic-grid figure:nth-child(12n+5) {
+            grid-column: span 2;
+            grid-row: span 3;
+        }
+
+        .dynamic-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .dynamic-grid figure:hover img {
+            transform: scale(1.1);
+        }
+
+        .dynamic-grid figcaption {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dynamic-grid figure:hover figcaption {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .dynamic-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                grid-auto-rows: 150px;
+                gap: 4px;
+            }
+
+            .dynamic-grid figure:nth-child(6n+1),
+            .dynamic-grid figure:nth-child(10n+7),
+            .dynamic-grid figure:nth-child(12n+5) {
+                grid-column: span 1;
+            }
+
+            .dynamic-grid figcaption {
+                padding: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>

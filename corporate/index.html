@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Corporate Portfolio · Alerego.dev</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    'sans': ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        ocean: '#38bdf8',
+                        midnight: '#020817'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <div class="relative isolate overflow-hidden">
+        <div class="absolute inset-0 -z-10 bg-gradient-to-br from-slate-900 via-sky-900 to-indigo-900"></div>
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_20%,rgba(56,189,248,0.25),transparent_60%)]"></div>
+
+        <header class="px-6 py-8 sm:px-10 lg:px-16">
+            <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6">
+                <a href="/" class="text-lg font-semibold text-white">← Back to Alerego.dev</a>
+                <div class="flex flex-wrap items-center gap-4 text-sm font-medium">
+                    <a href="/cosplay/" class="rounded-full border border-white/20 px-5 py-2 text-white/80 transition hover:border-white hover:text-white">Cosplay</a>
+                    <a href="/corporate/" class="rounded-full bg-white/20 px-5 py-2 text-white shadow-lg shadow-sky-400/30 backdrop-blur">Corporate</a>
+                    <a href="mailto:contact@alerego.dev" class="rounded-full border border-white/20 px-5 py-2 text-white/80 transition hover:border-white hover:text-white">Book a shoot</a>
+                </div>
+            </nav>
+
+            <section class="mx-auto mt-16 flex max-w-6xl flex-col gap-10 lg:flex-row lg:items-center">
+                <div class="flex-1 space-y-8">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-white/80">
+                        Elevated brand narratives
+                    </span>
+                    <h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                        Visual systems engineered for bold brands and teams.
+                    </h1>
+                    <p class="max-w-2xl text-lg leading-relaxed text-white/80">
+                        Product launches, leadership portraits, keynotes, and campaign imagery captured with precision. Let’s craft a visual identity that feels timeless, intentional, and unmistakably premium.
+                    </p>
+                </div>
+                <div class="flex-1">
+                    <div class="relative mx-auto max-w-md">
+                        <div class="absolute -inset-10 -z-10 bg-sky-500/30 blur-3xl"></div>
+                        <div class="rounded-[32px] border border-white/20 bg-white/10 p-1 backdrop-blur-xl">
+                            <img src="/images/corporate/featured/jabergamo/full/20250604-160730-Jabergamo-Hq-2025.jpg" alt="Corporate portrait" class="h-full w-full rounded-[28px] object-cover" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <main class="relative mx-auto mt-16 max-w-6xl px-6 pb-24 sm:px-10 lg:px-16">
+            <div class="rounded-[40px] border border-white/10 bg-slate-900/70 p-8 shadow-2xl backdrop-blur-xl sm:p-12">
+                <div class="mb-12 flex flex-wrap items-end justify-between gap-6">
+                    <div>
+                        <h2 class="text-2xl font-semibold text-white sm:text-3xl">Corporate Commissions</h2>
+                        <p class="mt-3 max-w-xl text-base text-white/70">Sync your latest campaigns by placing files in <code class="rounded bg-white/10 px-1.5 py-0.5 text-xs font-medium">images/corporate/</code> and running <code class="rounded bg-white/10 px-1.5 py-0.5 text-xs font-medium">node scripts/generate-gallery-manifests.js</code>.</p>
+                    </div>
+                    <a href="mailto:contact@alerego.dev" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/30 transition hover:shadow-sky-500/50">
+                        <span>Plan your production</span>
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div id="gallery" data-gallery-grid data-empty-prompt="corporate-config.js"></div>
+
+                <!-- Featured Events Section -->
+                <section class="mt-20">
+                    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                        <div class="space-y-4">
+                            <p class="text-sm uppercase tracking-[0.35em] text-white/60">Premium Coverage</p>
+                            <h2 class="text-3xl font-semibold text-white sm:text-4xl">Featured events</h2>
+                            <p class="max-w-2xl text-base text-white/70">Signature corporate events, brand launches, and executive portraits that showcase professional excellence.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 dynamic-sets-grid" id="corporate-featured-events"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/90 px-6 backdrop-blur-xl">
+        <button aria-label="Close" class="absolute right-6 top-6 text-3xl text-white/70 transition hover:text-white" data-lightbox-close>&times;</button>
+        <button aria-label="Previous" class="absolute left-6 top-1/2 hidden -translate-y-1/2 text-3xl text-white/70 transition hover:text-white sm:block" data-lightbox-prev>&lsaquo;</button>
+        <button aria-label="Next" class="absolute right-6 top-1/2 hidden -translate-y-1/2 text-3xl text-white/70 transition hover:text-white sm:block" data-lightbox-next>&rsaquo;</button>
+        <div class="flex max-h-[85vh] w-full max-w-5xl flex-col items-center">
+            <img id="lightbox-img" alt="Corporate full view" class="max-h-[75vh] max-w-full rounded-3xl object-contain shadow-2xl" loading="lazy">
+            <p id="caption" class="mt-6 text-center text-lg text-white/80"></p>
+        </div>
+    </div>
+
+    <script src="/scripts/gallery.js"></script>
+    <script src="/scripts/corporate-config.js"></script>
+
+    <style>
+        .dynamic-sets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 2rem;
+            grid-auto-flow: dense;
+        }
+
+        .dynamic-sets-grid figure {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            margin: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            aspect-ratio: 16 / 10;
+        }
+
+        .dynamic-sets-grid figure[data-orientation="portrait"] {
+            aspect-ratio: 3 / 4;
+        }
+
+        .dynamic-sets-grid figure[data-orientation="square"] {
+            aspect-ratio: 1 / 1;
+        }
+
+        .dynamic-sets-grid figure:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .dynamic-sets-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .dynamic-sets-grid figure:hover img {
+            transform: scale(1.05);
+        }
+
+        .dynamic-sets-grid figcaption {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dynamic-sets-grid figure:hover figcaption {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .dynamic-sets-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 8px;
+            }
+
+            .dynamic-sets-grid figcaption {
+                padding: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>
