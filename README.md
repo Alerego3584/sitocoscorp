@@ -39,8 +39,13 @@ Password locale: variabile `ADMIN_PASSWORD` (fallback solo in `scripts/local-ser
 Il sito vecchio è già su Cloudflare Pages, collegato a questo repo. **Non ricreare** il progetto Pages, **non creare** KV o R2 nuovi.
 
 1. `git push` su `origin` (branch `master`).
-2. Pages rifà il deploy da solo. Binding `ALEREGO_META` / `ALEREGO_GALLERY` e variabili `ADMIN_PASSWORD` / `JWT_SECRET` restano quelli già impostati.
-3. Dopo il deploy: rifai login in `/admin/` (token HMAC nuovi). Se `JWT_SECRET` in dashboard è quello vecchio, va bene: è solo il formato del token che è cambiato.
+2. Pages rifà il deploy da solo. **Non c’è `wrangler.toml`**: i binding si impostano solo in dashboard (Settings → Bindings / Functions).
+   - KV: variable name `ALEREGO_META`
+   - R2: variable name `ALEREGO_GALLERY` → bucket `alerego_gallery`
+   - Variabili: `ADMIN_PASSWORD`, `JWT_SECRET`
+3. Dopo il deploy: rifai login in `/admin/` (token HMAC nuovi).
+
+Se il deploy precedente ha messo il progetto in modalità Wrangler, dopo questo push i binding della dashboard tornano modificabili. Se `ALEREGO_META` non c’è più, riagganciarlo una volta.
 
 Build Pages: nessuna. Output: root. Functions in `functions/`.
 

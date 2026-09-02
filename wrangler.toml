@@ -1,9 +1,0 @@
-name = "alerego"
-compatibility_date = "2024-09-23"
-pages_build_output_dir = "."
-
-# Do not put KV namespace IDs here. Pages Git deploys read this file and
-# reject placeholder IDs (error 8000022). Bindings stay in the dashboard:
-#   KV  ALEREGO_META
-#   R2  ALEREGO_GALLERY -> bucket alerego_gallery
-#   vars ADMIN_PASSWORD, JWT_SECRET
