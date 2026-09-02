@@ -1,37 +1,35 @@
-// Helper per creare una semplice risposta JSON
-const jsonRes = (data, status = 200) => {
-    return new Response(JSON.stringify(data), {
-        status,
-        headers: { 'Content-Type': 'application/json' }
-    });
-};
+import { jsonRes, signToken, consumeAuthAttempt, clientIp } from "./_auth.js";
 
 export async function onRequestPost(context) {
-    const { request, env } = context;
+  const { request, env } = context;
 
-    try {
-        const body = await request.json();
-        const { password } = body;
+  const ip = clientIp(request);
+  const limit = consumeAuthAttempt(ip);
+  if (!limit.ok) {
+    return jsonRes({ error: "Too many attempts. Try again later." }, 429);
+  }
 
-        // env.ADMIN_PASSWORD dovrà essere configurata nel pannello di Cloudflare Pages (Settings > Environment Variables)
-        const validPassword = env.ADMIN_PASSWORD;
+  try {
+    const body = await request.json();
+    const { password } = body;
 
-        if (!validPassword) {
-            return jsonRes({ error: "Missing config: ADMIN_PASSWORD not set in Cloudflare dashboard." }, 500);
-        }
-
-        if (password !== validPassword) {
-            return jsonRes({ error: "Unauthorized" }, 401);
-        }
-
-        // Per semplicità non usiamo una libreria complessa per JWT ma un hash HMAC fatto in casa (più leggero e zero-deps)
-        const secretKey = env.JWT_SECRET || 'secret-fallback-key-do-not-use-in-prod';
-        
-        // Costruiamo un token finto semplice in questa prima iterazione (in prod potresti usare HMAC della SubtleCrypto)
-        const token = btoa(`${Date.now()}:${secretKey}`);
-
-        return jsonRes({ token, message: "Logged in successfully" });
-    } catch (e) {
-        return jsonRes({ error: "Bad request" }, 400);
+    const validPassword = env.ADMIN_PASSWORD;
+    if (!validPassword) {
+      return jsonRes({ error: "ADMIN_PASSWORD not configured on Cloudflare Pages" }, 500);
     }
+
+    if (password !== validPassword) {
+      return jsonRes({ error: "Unauthorized" }, 401);
+    }
+
+    const secretKey = env.JWT_SECRET;
+    if (!secretKey) {
+      return jsonRes({ error: "JWT_SECRET not configured on Cloudflare Pages" }, 500);
+    }
+
+    const token = await signToken(secretKey);
+    return jsonRes({ token, message: "Logged in successfully" });
+  } catch {
+    return jsonRes({ error: "Bad request" }, 400);
+  }
 }

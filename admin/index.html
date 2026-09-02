@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery Admin · Alerego.dev</title>
+    <meta name="robots" content="noindex, nofollow">
+    <title data-i18n="admin.meta.title">Gallery Admin · Alerego.dev</title>
     <link rel="preconnect" href="https://rsms.me/">
+    <link rel="icon" href="/favicon.png" type="image/svg+xml">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -24,28 +25,47 @@
     </script>
     <style>
         .hidden-view { display: none !important; }
+        #dashboard-view:not(.hidden-view) { display: flex; }
+        .lang-switch { display: inline-flex; border: 1px solid rgba(255,255,255,.15); border-radius: 6px; overflow: hidden; }
+        .lang-switch button { min-width: 2.4rem; padding: .4rem .55rem; background: transparent; color: #94a3b8; font-size: .72rem; font-weight: 700; letter-spacing: .08em; }
+        .lang-switch button[aria-pressed="true"] { background: #f8fafc; color: #020617; }
     </style>
+    <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem("alerego-lang");
+        var lang = stored === "it" || stored === "en" ? stored : ((navigator.language || "").toLowerCase().indexOf("it") === 0 ? "it" : "en");
+        document.documentElement.lang = lang;
+      } catch (e) {}
+    })();
+    </script>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
-    <!-- Background styling -->
     <div class="fixed inset-0 -z-10 bg-slate-950"></div>
 
-    <!-- Login View -->
     <div id="login-view" class="flex min-h-screen items-center justify-center p-4">
-        <div class="w-full max-w-sm rounded-xl border border-white/10 bg-slate-900/60 p-8 shadow-2xl backdrop-blur-xl">
+        <div class="w-full max-w-sm rounded-xl border border-white/10 bg-slate-900/60 p-8 shadow-2xl">
+            <div class="mb-6 flex justify-end">
+                <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.language">
+                    <button type="button" data-set-lang="en">EN</button>
+                    <button type="button" data-set-lang="it">IT</button>
+                </div>
+            </div>
             <div class="mb-8 text-center">
-                <h1 class="text-2xl font-bold text-white">Gallery Admin</h1>
-                <p class="mt-2 text-sm text-slate-400">Enter master password to continue</p>
+                <h1 class="text-2xl font-bold text-white" data-i18n="admin.login.title">Gallery Admin</h1>
+                <p class="mt-2 text-sm text-slate-400" data-i18n="admin.login.lead">Enter master password to continue</p>
             </div>
             
             <form id="login-form" class="space-y-4">
                 <div>
-                    <input type="password" id="password" required
+                    <label for="password" class="mb-2 block text-sm text-slate-300" data-i18n="admin.login.label">Master password</label>
+                    <input type="password" id="password" name="password" autocomplete="current-password" required
                         class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
-                        placeholder="••••••••">
+                        placeholder="Enter password…" data-i18n-attr="placeholder:admin.login.placeholder">
                 </div>
                 <button type="submit"
-                    class="w-full rounded-xl bg-brand px-4 py-3 font-semibold text-slate-950 transition hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-slate-900">
+                    class="w-full rounded-xl bg-brand px-4 py-3 font-semibold text-slate-950 transition hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-slate-900"
+                    data-i18n="admin.login.submit">
                     Sign In
                 </button>
                 <div id="login-error" class="hidden text-center text-sm text-red-400"></div>
@@ -55,26 +75,30 @@
 
     <!-- Dashboard View -->
     <div id="dashboard-view" class="hidden-view min-h-screen flex-col">
-        <header class="border-b border-white/10 bg-slate-900/50 backdrop-blur-xl">
-            <div class="mx-auto flex max-w-7xl items-center justify-between p-4 px-6">
-                <h1 class="text-xl font-bold text-white">Gallery CMS</h1>
-                <div class="flex gap-4">
-                    <button id="save-all-btn" class="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400">Save Changes</button>
-                    <button id="logout-btn" class="text-sm font-medium text-slate-400 hover:text-white">Sign out</button>
+        <header class="border-b border-white/10 bg-slate-900/50">
+            <div class="mx-auto flex max-w-7xl flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+                <h1 class="text-xl font-bold text-white" data-i18n="admin.cms">Gallery CMS</h1>
+                <div class="flex flex-wrap items-center gap-3">
+                    <div class="lang-switch" role="group" data-i18n-attr="aria-label:nav.language">
+                        <button type="button" data-set-lang="en">EN</button>
+                        <button type="button" data-set-lang="it">IT</button>
+                    </div>
+                    <button id="save-all-btn" class="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400" data-i18n="admin.save">Save Changes</button>
+                    <button id="logout-btn" class="text-sm font-medium text-slate-400 hover:text-white" data-i18n="admin.signOut">Sign out</button>
                 </div>
             </div>
         </header>
         
         <main class="mx-auto w-full max-w-7xl flex-1 p-6">
-            <div class="mb-8 flex items-center justify-between">
+            <div class="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                 <div>
-                    <h2 class="text-2xl font-semibold">Manage Sets</h2>
-                    <p class="text-sm text-slate-400 mt-1">Drag and drop sets to change the order they appear on your site.</p>
+                    <h2 class="text-2xl font-semibold" data-i18n="admin.manage">Manage Sets</h2>
+                    <p class="text-sm text-slate-400 mt-1" data-i18n="admin.manageLead">Drag and drop sets to change the order they appear on your site.</p>
                 </div>
-                <div class="flex items-center gap-3">
-                    <a href="/cosplay/" class="rounded-lg bg-white/5 px-4 py-2 text-sm font-medium hover:bg-white/20 transition">Cosplay</a>
-                    <a href="/corporate/" class="rounded-lg bg-white/5 px-4 py-2 text-sm font-medium hover:bg-white/20 transition">Corporate</a>
-                    <button id="create-set-btn" class="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/20 transition">
+                <div class="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+                    <a href="/cosplay/" class="rounded-lg bg-white/5 px-4 py-2 text-sm font-medium text-center hover:bg-white/20 transition">Cosplay</a>
+                    <a href="/corporate/" class="rounded-lg bg-white/5 px-4 py-2 text-sm font-medium text-center hover:bg-white/20 transition">Corporate</a>
+                    <button id="create-set-btn" class="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/20 transition" data-i18n="admin.create">
                         + Create New Set
                     </button>
                 </div>
@@ -89,46 +113,46 @@
 
     <!-- Edit Modal (Hidden initially) -->
     <div id="edit-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
-        <div class="w-full max-w-lg rounded-2xl border border-white/10 bg-slate-900 p-6 shadow-2xl relative">
+        <div class="w-full max-w-2xl rounded-2xl border border-white/10 bg-slate-900 p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button id="close-modal" class="absolute top-4 right-4 text-slate-400 hover:text-white">&times;</button>
-            <h3 class="text-xl font-semibold mb-4" id="modal-heading">Edit Set Properties</h3>
+            <h3 class="text-xl font-semibold mb-4" id="modal-heading" data-i18n="admin.editHeading">Edit Set Properties</h3>
             
             <div class="space-y-4">
-                <div id="new-set-fields" class="hidden grid grid-cols-2 gap-4">
+                <div id="new-set-fields" class="hidden grid grid-cols-1 gap-4">
                     <div>
-                        <label class="block text-xs font-medium text-slate-400 mb-1">Type</label>
+                        <label class="block text-xs font-medium text-slate-400 mb-1" data-i18n="admin.type">Type</label>
                         <select id="modal-type" class="w-full rounded-lg border border-white/10 bg-white/5 p-3 text-white focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand">
                             <option value="cosplay">Cosplay</option>
                             <option value="corporate">Corporate</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-slate-400 mb-1">Slug (URL)</label>
+                        <label class="block text-xs font-medium text-slate-400 mb-1" data-i18n="admin.slug">Slug (URL)</label>
                         <input type="text" id="modal-slug" placeholder="e.g. neon-dreams" class="w-full rounded-lg border border-white/10 bg-white/5 p-3 text-white focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1">Title</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1" data-i18n="admin.title">Title</label>
                     <input type="text" id="modal-title" class="w-full rounded-lg border border-white/10 bg-white/5 p-3 text-white focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-slate-400 mb-1">Description</label>
+                    <label class="block text-xs font-medium text-slate-400 mb-1" data-i18n="admin.desc">Description</label>
                     <textarea id="modal-desc" class="w-full h-24 rounded-lg border border-white/10 bg-white/5 p-3 text-white focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"></textarea>
                 </div>
                 <div id="save-first-message" class="hidden border-t border-white/10 pt-4 mt-2">
-                    <p class="text-sm text-slate-400 italic text-center w-full bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                    <p class="text-sm text-slate-400 italic text-center w-full bg-slate-800/50 rounded-lg p-4 border border-slate-700/50" data-i18n="admin.saveFirst">
                         Save the set first to enable photo uploads. You will be able to upload photos by clicking the edit icon on the saved set.
                     </p>
                 </div>
                 
                 <div id="upload-section" class="border-t border-white/10 pt-4 mt-2">
-                    <label class="block text-xs font-medium text-brand mb-2">Upload Photo to this Set</label>
+                    <label class="block text-xs font-medium text-brand mb-2" data-i18n="admin.upload">Upload Photo to this Set</label>
                     <div class="flex items-center justify-center w-full">
                         <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-700 border-dashed rounded-lg cursor-pointer bg-slate-800 hover:bg-slate-700/50 relative overflow-hidden transition-all group">
                             <div class="flex flex-col items-center justify-center pt-5 pb-6 z-10 pointer-events-none">
-                                <p class="text-sm text-slate-400 group-hover:text-white transition"><span class="font-semibold text-white">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-300 transition">PNG, JPG or WEBP</p>
+                                <p class="text-sm text-slate-400 group-hover:text-white transition"><span class="font-semibold text-white" data-i18n="admin.uploadClick">Click to upload</span><span data-i18n="admin.uploadOr"> or drag and drop</span></p>
+                                <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-300 transition" data-i18n="admin.uploadTypes">PNG, JPG or WEBP</p>
                             </div>
                             <input id="modal-file" type="file" class="hidden" accept="image/*" multiple />
                         </label>
@@ -137,20 +161,21 @@
                 </div>
 
                 <div id="cover-selection-area" class="border-t border-white/10 pt-4 mt-2 hidden">
-                    <label class="block text-xs font-medium text-slate-400 mb-2">Select Featured Cover Image</label>
-                    <div id="cover-grid" class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
-                        <!-- Thumbs rendered here via JS -->
+                    <label class="block text-xs font-medium text-slate-400 mb-2" data-i18n="admin.photos">Photos in this set</label>
+                    <p class="text-[11px] text-slate-500 mb-3 leading-relaxed" data-i18n="admin.photosHelp">Cover: click the photo. Grid: category galleries. Home: one horizontal photo for that category tile on the landing page.</p>
+                    <div id="cover-grid" class="grid grid-cols-2 gap-3 sm:grid-cols-3">
                     </div>
                 </div>
 
-                <div class="pt-4 flex gap-3">
-                    <button id="modal-delete-btn" class="hidden rounded-lg bg-red-500/20 text-red-400 px-4 py-3 font-semibold transition hover:bg-red-500 hover:text-white">Delete</button>
-                    <button id="modal-save-btn" class="flex-1 w-full rounded-lg bg-brand px-4 py-3 font-semibold text-slate-950 transition hover:bg-sky-400">Done</button>
+                <div class="pt-4 flex flex-col-reverse gap-3 sm:flex-row">
+                    <button id="modal-delete-btn" class="hidden rounded-lg bg-red-500/20 text-red-400 px-4 py-3 font-semibold transition hover:bg-red-500 hover:text-white" data-i18n="admin.delete">Delete</button>
+                    <button id="modal-save-btn" class="flex-1 w-full rounded-lg bg-brand px-4 py-3 font-semibold text-slate-950 transition hover:bg-sky-400" data-i18n="admin.done">Done</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="/admin/app.js"></script>
+    <script src="/scripts/i18n.js?v=20260902l"></script>
+    <script src="/admin/app.js?v=20260902l"></script>
 </body>
 </html>

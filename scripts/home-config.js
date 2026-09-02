@@ -1,5 +1,5 @@
 const API_SETS_URL = '/api/public/sets';
-const MAX_HOME_SHOWCASE_ITEMS = 6;
+const MAX_HOME_SHOWCASE_ITEMS = 12;
 const FALLBACK_HOME_IMAGES = [];
 
 
@@ -49,7 +49,6 @@ async function fetchFeaturedSets() {
         const data = await response.json();
         return Array.isArray(data?.sets) ? data.sets : [];
     } catch (error) {
-        console.warn(`API unavailable.`, error);
         return [];
     }
 }
@@ -123,38 +122,45 @@ function selectFeaturedSetsForHome(allSets) {
 }
 
 function buildGalleryItemsFromSets(sets) {
-    return sets.map((set) => {
-        const thumbnail = set.coverImage?.thumbnail || set.coverImage?.full;
-        const full = set.coverImage?.full || set.coverImage?.thumbnail;
+    const items = [];
 
-        if (!thumbnail || !full) {
-            return null;
-        }
+    sets.forEach((set) => {
+        const type = set.type === 'corporate' ? 'corporate' : 'cosplay';
+        const paths = Array.isArray(set.featuredImages) && set.featuredImages.length
+            ? set.featuredImages
+            : (Array.isArray(set.images) ? set.images : []);
 
-        const prettyCategory = set.category?.trim() || (set.type === 'corporate' ? 'Corporate' : 'Cosplay');
-        const dateLabel = formatDateLabel(set.isoDate);
-        const descriptor = [prettyCategory, dateLabel].filter(Boolean).join(' · ');
-        const label = set.type === 'corporate' ? 'Corporate event' : 'Cosplay set';
+        paths.forEach((imgPath) => {
+            const full = `/media/${imgPath}`;
+            items.push({
+                title: set.title || toTitleCase(set.slug),
+                description: type === 'corporate' ? 'Corporate' : 'Cosplay',
+                thumbnail: full.replace('/full/', '/thumbnails/'),
+                full,
+                label: type === 'corporate' ? 'Corporate' : 'Cosplay',
+                type
+            });
+        });
+    });
 
-        return {
-            title: set.title || toTitleCase(set.slug),
-            description: descriptor,
-            thumbnail,
-            full,
-            href: buildSetGalleryUrl(set.slug, set.type),
-            label,
-            date: set.isoDate,
-            type: set.type || 'cosplay'
-        };
-    }).filter(Boolean);
+    return items;
+}
+
+function interleaveTypes(items) {
+    const cosplay = items.filter((item) => item.type !== 'corporate');
+    const corporate = items.filter((item) => item.type === 'corporate');
+    const mixed = [];
+    const max = Math.max(cosplay.length, corporate.length);
+    for (let i = 0; i < max; i += 1) {
+        if (cosplay[i]) mixed.push(cosplay[i]);
+        if (corporate[i]) mixed.push(corporate[i]);
+    }
+    return mixed.slice(0, MAX_HOME_SHOWCASE_ITEMS);
 }
 
 async function loadHomeGalleryItems() {
     const allSets = await fetchFeaturedSets();
-
-    const featuredItems = buildGalleryItemsFromSets(
-        selectFeaturedSetsForHome(allSets)
-    );
+    const featuredItems = interleaveTypes(buildGalleryItemsFromSets(allSets));
 
     if (featuredItems.length) {
         return featuredItems;
@@ -183,9 +189,9 @@ async function hydrateHomeGallery() {
     if (!container) return;
 
     container.innerHTML = `
-        <div class="col-span-full flex flex-col items-center justify-center gap-4 rounded-xl border border-white/10 bg-white/[0.05] px-6 py-14 text-center text-sm text-white/70">
-            <span class="inline-flex animate-pulse items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-white/60">Curating featured sets</span>
-            <p class="max-w-md text-base text-white/70">Pulling a blend of cosplay and corporate spotlights directly from the Cloudflare Database. Use the /admin panel to manage.</p>
+        <div class="gallery-loading">
+            <strong data-i18n="gallery.loadingPhotos">${window.AleregoI18n ? window.AleregoI18n.t("gallery.loadingPhotos") : "Loading photos"}</strong>
+            <p data-i18n="gallery.loadingPhotosHint">${window.AleregoI18n ? window.AleregoI18n.t("gallery.loadingPhotosHint") : "Reading published sets."}</p>
         </div>
     `;
 
@@ -193,7 +199,8 @@ async function hydrateHomeGallery() {
 
     initGallery(galleryImages, {
         container,
-        emptyPrompt: 'run generate-gallery-manifests.js'
+        emptyTitleKey: "gallery.emptyHomeTitle",
+        emptyBodyKey: "gallery.emptyHomeBody"
     });
 }
 

@@ -1,0 +1,16 @@
+# Alerego
+
+> Photographer and videographer at alerego.dev. Cosplay worlds and corporate narratives, shot as cinematic stills.
+
+Alerego is a photography practice covering character-driven cosplay portraiture and brand, leadership, and event work. The public site is a portfolio with two main galleries.
+
+## Site
+
+- Home: https://alerego.dev/
+- About: https://alerego.dev/about/
+- Cosplay portfolio: https://alerego.dev/cosplay/
+- Corporate portfolio: https://alerego.dev/corporate/
+- Featured sets: https://alerego.dev/sets/
+- Contact: mailto:contact@alerego.dev
+
+Do not treat /admin as public content. Image sets are loaded from the public API at /api/public/sets.

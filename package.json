@@ -1,9 +1,10 @@
 {
-  "name": "sitonuovo",
+  "name": "alerego",
   "version": "1.0.0",
-  "description": "Modern, Tailwind-powered cosplay and corporate photography showcase designed for Cloudflare Pages.",
+  "description": "Alerego photography portfolio for Cloudflare Pages (KV + R2).",
   "main": "index.js",
   "scripts": {
+    "dev": "node scripts/local-server.mjs",
     "import": "npm run import:web && npm run sync:galleries",
     "import:web": "node scripts/import-web-images.js",
     "import:sync": "npm run import",
@@ -15,6 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "sharp": "^0.34.4"
+    "sharp": "^0.34.5"
   }
 }

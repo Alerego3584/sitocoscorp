@@ -1,3 +1,15 @@
+function t(key, vars) {
+    return window.AleregoI18n ? window.AleregoI18n.t(key, vars) : key;
+}
+
+function applyI18n(root) {
+    if (window.AleregoI18n) window.AleregoI18n.apply(root);
+}
+
+function galleryLabel(title, hasHref) {
+    return `${title || t('gallery.photo')} - ${hasHref ? t('gallery.openSet') : t('gallery.viewFull')}`;
+}
+
 let currentImageIndex = 0;
 let currentLightboxImages = [];
 
@@ -94,16 +106,6 @@ function applyOrientationStyles({ figure, imageEl, hint }) {
 
     figure.dataset.orientation = orientation;
     figure.style.gridColumn = '';
-    
-    // Le verticali occupano due slot verticali, orizzontali e quadrate 1
-    if (orientation === 'portrait') {
-        figure.classList.add('row-span-2');
-        figure.classList.remove('row-span-1');
-    } else {
-        figure.classList.add('row-span-1');
-        figure.classList.remove('row-span-2');
-    }
-
     imageEl.dataset.orientation = orientation;
     imageEl.style.width = '100%';
     imageEl.style.height = '100%';
@@ -132,19 +134,19 @@ function initGallery(imageConfig = [], options = {}) {
     const gallery = resolveGalleryContainer(options);
 
     if (!gallery) {
-        console.warn('Alerego.dev gallery: container not found');
         return;
     }
 
-    const emptyPrompt = options.emptyPrompt || gallery.dataset.emptyPrompt || 'config.js';
     const orderedLayoutOptions = options.orderedLayout || {};
 
     if (!imageConfig.length) {
         resetOrderedGridLayout(gallery);
+        const titleKey = options.emptyTitleKey || 'gallery.emptyTitle';
+        const bodyKey = options.emptyBodyKey || 'gallery.emptyBody';
         gallery.innerHTML = `
-            <div class="col-span-full rounded-xl border border-white/10 bg-white/[0.03] p-10 text-center text-sm text-white/70">
-                <p class="mb-4 text-base font-semibold text-white">Gallery coming soon</p>
-                <p>Head over to <span class="rounded bg-white/10 px-1.5 py-0.5 font-mono text-xs">scripts/${emptyPrompt}</span> and add your first entries. Use optimized thumbnails for peak performance.</p>
+            <div class="gallery-empty">
+                <p><strong data-i18n="${titleKey}">${t(titleKey)}</strong></p>
+                <p data-i18n="${bodyKey}">${t(bodyKey)}</p>
             </div>
         `;
         return;
@@ -153,39 +155,7 @@ function initGallery(imageConfig = [], options = {}) {
     gallery.innerHTML = '';
     gallery.dataset.count = imageConfig.length;
 
-    gallery.classList.remove(
-        'grid',
-        'grid-cols-2',
-        'sm:grid-cols-2',
-        'sm:grid-cols-3',
-        'lg:grid-cols-3',
-        'lg:grid-cols-4',
-        'xl:grid-cols-4',
-        'xl:grid-cols-5',
-        '2xl:grid-cols-6',
-        'gap-3',
-        'gap-4',
-        'auto-rows-auto',
-        'columns-1',
-        'sm:columns-2',
-        'lg:columns-3',
-        'xl:columns-4',
-        '2xl:columns-5',
-        '[column-fill:balance]'
-    );
-
-    gallery.classList.add(
-        'grid',
-        'grid-cols-2',
-        'sm:grid-cols-2',
-        'lg:grid-cols-3',
-        'xl:grid-cols-4',
-        'gap-4',
-        'auto-rows-[160px]',
-        'sm:auto-rows-[200px]',
-        'lg:auto-rows-[240px]',
-        'grid-flow-row-dense'
-    );
+    gallery.classList.add('gallery-grid');
     gallery.style.columnGap = '';
 
     imageConfig.forEach((image, index) => {
@@ -195,25 +165,21 @@ function initGallery(imageConfig = [], options = {}) {
         const rawType = (image.type || '').toString().toLowerCase();
         const resolvedType = rawType === 'corporate' ? 'corporate' : 'cosplay';
 
-        const baseFigureClass = 'group relative overflow-hidden rounded-md border shadow-xl shadow-black/40 transition-all duration-500 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white/50';
-        const typeFigureClass = resolvedType === 'corporate'
-            ? 'border-sky-400/20 bg-sky-500/10 hover:border-sky-300/40 hover:shadow-2xl hover:shadow-sky-500/40'
-            : 'border-fuchsia-400/30 bg-fuchsia-500/10 hover:border-fuchsia-300/50 hover:shadow-2xl hover:shadow-purple-500/40';
-
-        figure.className = `${baseFigureClass} ${typeFigureClass}`;
+        figure.className = `gallery-card gallery-card--${resolvedType}`;
         figure.setAttribute('role', 'button');
         figure.setAttribute('tabindex', '0');
-        figure.setAttribute('aria-label', `${image.title || 'Portfolio image'} — ${hasHref ? 'open collection' : 'view full size'}`);
+        figure.setAttribute('aria-label', galleryLabel(image.title, hasHref));
         figure.dataset.sectionType = resolvedType;
+        figure.dataset.title = image.title || '';
         if (hasHref) {
             figure.dataset.href = image.href;
         }
 
         const coverImage = document.createElement('img');
         coverImage.src = image.thumbnail;
-        coverImage.alt = image.title || 'Portfolio thumbnail';
+        coverImage.alt = image.title || t('gallery.photo');
         coverImage.loading = 'lazy';
-        coverImage.className = 'h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105';
+        coverImage.className = 'gallery-card__image';
         coverImage.dataset.sectionType = resolvedType;
 
         const orientationHint = (image.orientation || '').toString().toLowerCase();
@@ -229,7 +195,7 @@ function initGallery(imageConfig = [], options = {}) {
         figure.appendChild(coverImage);
 
         figure.addEventListener('click', () => {
-            if (hasHref) {
+            if (hasHref && gallery.id !== 'home-gallery') {
                 window.location.href = image.href;
                 return;
             }
@@ -239,7 +205,7 @@ function initGallery(imageConfig = [], options = {}) {
         figure.addEventListener('keypress', (event) => {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
-                if (hasHref) {
+                if (hasHref && gallery.id !== 'home-gallery') {
                     window.location.href = image.href;
                     return;
                 }
@@ -251,13 +217,24 @@ function initGallery(imageConfig = [], options = {}) {
     });
 
     const defaultLayout = gallery.id === 'home-gallery'
-        ? { targetRowHeight: 230, maxRowHeight: 320, gap: 14 }
-        : { targetRowHeight: 260, maxRowHeight: 360, gap: 12 };
+        ? { targetRowHeight: 230, maxRowHeight: 320, gap: 10, layoutStyle: 'justified' }
+        : { targetRowHeight: 260, maxRowHeight: 380, gap: 10, layoutStyle: 'justified' };
 
-    applyOrderedGridLayout(gallery, {
+    const runLayout = () => applyOrderedGridLayout(gallery, {
         ...defaultLayout,
         ...orderedLayoutOptions
     });
+
+    const pending = Array.from(gallery.querySelectorAll('img')).filter((img) => !img.complete || !img.naturalWidth);
+    if (!pending.length) {
+        runLayout();
+        return;
+    }
+
+    Promise.all(pending.map((img) => (img.decode ? img.decode().catch(() => {}) : new Promise((resolve) => {
+        img.addEventListener('load', resolve, { once: true });
+        img.addEventListener('error', resolve, { once: true });
+    })))).then(runLayout);
 }
 
 function openLightbox(imageArray, index) {
@@ -275,18 +252,16 @@ function openLightbox(imageArray, index) {
     imageEl.alt = currentLightboxImages[index].title || 'Portfolio image';
     captionEl.textContent = '';
 
-    lightbox.classList.remove('hidden');
-    lightbox.classList.add('flex');
-    document.body.classList.add('overflow-hidden');
+    lightbox.classList.add('is-open');
+    document.body.classList.add('is-locked');
 }
 
 function closeLightbox() {
     const lightbox = document.querySelector(gallerySelectors.lightbox);
     if (!lightbox) return;
 
-    lightbox.classList.remove('flex');
-    lightbox.classList.add('hidden');
-    document.body.classList.remove('overflow-hidden');
+    lightbox.classList.remove('is-open');
+    document.body.classList.remove('is-locked');
 }
 
 function changeImage(direction) {
@@ -321,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', (event) => {
-        const isLightboxVisible = !lightbox?.classList.contains('hidden');
+        const isLightboxVisible = lightbox?.classList.contains('is-open');
         if (!isLightboxVisible) return;
 
         switch (event.key) {
@@ -335,5 +310,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 changeImage(1);
                 break;
         }
+    });
+});
+
+window.addEventListener('alerego:lang', () => {
+    document.querySelectorAll('figure.gallery-card').forEach((figure) => {
+        const hasHref = Boolean(figure.dataset.href);
+        figure.setAttribute('aria-label', galleryLabel(figure.dataset.title, hasHref));
+        const img = figure.querySelector('img');
+        if (img && !figure.dataset.title) img.alt = t('gallery.photo');
     });
 });

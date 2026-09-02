@@ -1,169 +1,53 @@
-# Alerego.dev – Photography Portfolio
+# Alerego.dev
 
-Modern, Tailwind-powered cosplay and corporate photography showcase designed for Cloudflare Pages.
+Portfolio fotografico (cosplay + corporate) su **Cloudflare Pages**.
+Le foto e i metadati dei set **non** stanno nel repo: arrivano da KV + R2, come nel sito precedente.
 
-## Highlights
+## Come funziona (come il vecchio sito)
 
-- ✨ Tailwind CSS via CDN – no build tooling required
-- 🧭 Multi-page setup (landing + cosplay + corporate)
-- �️ Responsive masonry galleries with lightbox + keyboard controls
-- ⚡ Lazy thumbnails and full-res swaps for fast loads
-- � Auto-generated image manifests driven by folder contents
-- 🚀 Drop-in ready for Cloudflare Pages, Netlify, or any static host
+| Cosa | Binding | Dettaglio |
+| --- | --- | --- |
+| Metadati set | KV `ALEREGO_META` | Chiave `galleries_metadata` (array di set: `id`, `type`, `slug`, `title`, `description`, `order`, `images[]`, più campi admin) |
+| File | R2 `ALEREGO_GALLERY` | Chiavi tipo `cosplay/featured/{slug}/full/{file}` e lo stesso path con `thumbnails/` |
+| API pubblica | `GET /api/public/sets` | Legge il KV |
+| Media | `GET /media/{chiave-r2}` | Serve l’oggetto R2 |
+| Admin | `/admin/` | `POST /api/admin/auth`, `GET\|POST /api/admin/sets`, `POST /api/admin/upload` |
 
-## Project Structure
+**Non creare** un KV o un bucket nuovi se i dati del vecchio sito devono restare. Riusa gli stessi binding.
 
-```text
-sitonuovo/
-├── index.html                   # Landing page with hero + mosaic
-├── cosplay/index.html           # Cosplay gallery
-├── corporate/index.html         # Corporate gallery
-├── scripts/
-│   ├── gallery.js               # Shared gallery + lightbox logic
-│   ├── home-config.js           # Landing page mosaic selections
-│   ├── cosplay-config.js        # Cosplay gallery loader
-│   ├── corporate-config.js      # Corporate gallery loader
-│   └── generate-gallery-manifests.js  # Manifest generator script
-├── images/
-│   ├── cosplay/
-│   │   ├── thumbnails/          # Optimized thumbs (600–800px)
-│   │   ├── full/                # Full-res delivery files (~2000px)
-│   │   ├── featured/            # Individual featured set folders
-│   │   └── manifest.json        # Auto-generated metadata
-│   └── corporate/
-│       ├── thumbnails/
-│       ├── full/
-│       ├── featured/
-│       └── manifest.json
-└── _headers                     # Cloudflare Pages headers config
+Password admin e JWT **non** vanno nel git: solo variabili d’ambiente su Pages.
+
+## Lingua
+
+Switch **EN / IT** in header. La scelta resta in `localStorage` (`alerego-lang`). Al primo visit, se il browser è italiano parte in italiano.
+
+I titoli dei set restano quelli salvati in admin (non tradotti automaticamente).
+
+## Locale
+
+```bash
+npm run dev
 ```
 
-## Workflow: Adding New Images
+Apre un mock di Pages (`KV` in `local-data/galleries_metadata.json`, `R2` in `local-data/r2/`).
+Non usare un server statico (`npx serve`): `/api` e `/media` non funzionerebbero.
 
-### Fast import workflow (recommended)
+Password locale: variabile `ADMIN_PASSWORD` (fallback solo in `scripts/local-server.mjs`). Non committare `.dev.vars`. Vedi [docs/SECURITY.md](docs/SECURITY.md).
 
-Drop originals into:
+## GitHub (progetto Pages già esistente)
 
-- `import/cosplay`
-- `import/corporate`
+Il sito vecchio è già su Cloudflare Pages, collegato a questo repo. **Non ricreare** il progetto Pages, **non creare** KV o R2 nuovi.
 
-You can also drop album folders inside each category:
+1. `git push` su `origin` (branch `master`).
+2. Pages rifà il deploy da solo. Binding `ALEREGO_META` / `ALEREGO_GALLERY` e variabili `ADMIN_PASSWORD` / `JWT_SECRET` restano quelli già impostati.
+3. Dopo il deploy: rifai login in `/admin/` (token HMAC nuovi). Se `JWT_SECRET` in dashboard è quello vecchio, va bene: è solo il formato del token che è cambiato.
 
-- `import/cosplay/<album-name>/...`
-- `import/corporate/<album-name>/...`
+Build Pages: nessuna. Output: root. Functions in `functions/`.
 
-Each folder is treated as one featured album/set.
-The album folder name is preserved exactly as the set name.
+Foto About: metti i file veri in `images/about/` (vedi README lì). L’hero in home si riempie da KV/R2. Per l’anteprima social, opzionale: `images/og/og-image.jpg`.
 
-Then run:
+## Repo da non committare
 
-```powershell
-npm run import
-```
-
-This command will:
-
-- optimize images for web (`full` at max 2200px edge, `thumbnails` at max 1100px edge),
-- place optimized files into `images/<category>/full` and `images/<category>/thumbnails`,
-- import each subfolder album into `images/<category>/featured/<album-folder-name>/`,
-- move source originals to `import/processed/<category>` only after the conversion stage completes,
-- regenerate gallery manifests automatically.
-
-`npm run import:sync` is still available as an alias of `npm run import`.
-
-### Manual workflow
-
-1. **Prep assets**
-
-   - Thumbnails: 600–800px on the long edge, JPEG/webp around 75% quality.
-   - Full images: 1800–2200px on the long edge, JPEG/webp around 85% quality.
-
-1. **Drop files**
-
-   - Cosplay → `images/cosplay/thumbnails/` & `images/cosplay/full/`
-   - Corporate → `images/corporate/thumbnails/` & `images/corporate/full/`
-   - Use matching filenames between thumbnail + full (e.g., `shoot-01.jpg`).
-
-1. **Sync galleries (recommended)**
-
-  ```powershell
-  npm run sync:galleries
-  ```
-
-  This single command normalises featured sets and regenerates all manifests.
-
-1. **Normalise featured sets (optional, standalone)**
-
-  ```powershell
-  npm run process:featured
-  ```
-
-  This command tidies each featured set by moving loose images into `full/`,
-  regenerating thumbnails, and scaffolding a `meta.json` with sensible defaults.
-
-1. **Regenerate manifests (optional, standalone)**
-
-  ```powershell
-  npm run generate:manifests
-  ```
-
-  The script inspects each folder, matches thumbs to fulls, and rewrites
-  `manifest.json` with up-to-date metadata. The front-end automatically pulls
-  the manifest and renders the masonry grid.
-
-  To spotlight a **featured set/event**, create a folder inside
-  `images/cosplay/featured/` or `images/corporate/featured/` with this shape:
-
-  ```text
-  images/cosplay/featured/neon-dreams/
-    thumbnails/
-    full/
-    meta.json (optional)
-  ```
-
-  Matching filenames between `thumbnails` and `full` are required. An optional
-  `meta.json` can define `title`, `description`, `category`, and per-image
-  captions under `captions`.
-
-1. **Preview locally**
-
-  ```powershell
-  npx serve -p 4173 c:\xampp\htdocs\sitocoscorp
-  ```
-
-  Open `http://localhost:4173` to confirm the galleries update as expected.
-
-## Customization Cheatsheet
-
-- **Colors & typography** – Edit the inline `tailwind.config` blocks at the top
-  of each HTML file.
-- **Feature text & CTAs** – Update copy directly inside the relevant section of
-  each page (`index.html`, `cosplay/index.html`, `corporate/index.html`).
-- **Home page mosaic** – Tweak `scripts/home-config.js` to spotlight your
-  favorite sets.
-- **Add another gallery** – Duplicate one of the gallery pages, create a new
-  manifest + config loader, and hook it up to navigation.
-
-## Tips for Image Prep
-
-- [Squoosh](https://squoosh.app/) or [TinyPNG](https://tinypng.com/) for quick
-  compression.
-- ImageMagick batch resize:
-
-  ```bash
-  magick mogrify -path thumbnails -resize 800x800 *.jpg
-  ```
-
-- Keep consistent color grading between thumbs and fulls for seamless transitions.
-
-## Deployment
-
-Upload the entire `sitonuovo` directory to any static host (Cloudflare Pages,
-Netlify, Vercel, S3, etc.). The `_headers` file already includes sensible cache
-and security headers for Cloudflare Pages.
-
-## Support
-
-Questions or improvements? Feel free to open an issue or adapt the project for
-your own workflow. For deployment specifics, consult the
-[Cloudflare Pages docs](https://developers.cloudflare.com/pages/).
+- `.dev.vars` (se lo usi con Wrangler in locale)
+- `node_modules/`
+- dump R2 enormi in `local-data/r2/` (opzionale; il seed locale si ricrea)

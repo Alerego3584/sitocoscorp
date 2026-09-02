@@ -19,7 +19,6 @@ async function fetchCosplaySets() {
         const sets = Array.isArray(data?.sets) ? data.sets : [];
         return sets.filter(s => s.type === CATEGORY).sort((a,b) => (a.order||0) - (b.order||0));
     } catch (error) {
-        console.warn('API unavailable, returning empty.', error);
         return [];
     }
 }
@@ -48,20 +47,22 @@ function buildGalleryItemsFromSets(sets) {
 function extractFeaturedImagesFromSets(sets) {
     const featuredList = [];
     sets.forEach(set => {
-        if (set.featuredImages && Array.isArray(set.featuredImages)) {
-            set.featuredImages.forEach(imgPath => {
-                const fullUrl = "/media/" + imgPath;
-                const thumbUrl = fullUrl.replace('/full/', '/thumbnails/');
-                featuredList.push({
-                    title: set.title || 'Featured Photo',
-                    description: set.category || 'Cosplay Highlights',
-                    thumbnail: thumbUrl,
-                    full: fullUrl,
-                    label: 'Featured Photo',
-                    type: CATEGORY
-                });
+        const starred = Array.isArray(set.featuredImages) && set.featuredImages.length
+            ? set.featuredImages
+            : [];
+        const paths = starred.length ? starred : (Array.isArray(set.images) ? set.images : []);
+        paths.forEach(imgPath => {
+            const fullUrl = "/media/" + imgPath;
+            const thumbUrl = fullUrl.replace('/full/', '/thumbnails/');
+            featuredList.push({
+                title: set.title || 'Featured Photo',
+                description: set.category || 'Cosplay Highlights',
+                thumbnail: thumbUrl,
+                full: fullUrl,
+                label: 'Featured Photo',
+                type: CATEGORY
             });
-        }
+        });
     });
     return featuredList;
 }
@@ -73,40 +74,35 @@ async function hydrateCosplayGallery() {
     if (!setsContainer || !highlightsContainer) return;
 
     highlightsContainer.innerHTML = `
-        <div class="col-span-full flex flex-col items-center justify-center gap-4 rounded-xl border border-white/10 bg-white/[0.05] px-6 py-14 text-center text-sm text-white/70">
-            <span class="inline-flex animate-pulse items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-white/60">Loading highlights</span>
-            <p class="max-w-md text-base text-white/70">Fetching starred cosplay photos via Cloudflare KV index...</p>
+        <div class="gallery-loading">
+            <strong data-i18n="gallery.loadingHighlights"></strong>
+            <p data-i18n="gallery.loadingHighlightsCosplay"></p>
         </div>
     `;
+    window.AleregoI18n?.apply(highlightsContainer);
 
     setsContainer.innerHTML = `
-        <div class="col-span-full flex flex-col items-center justify-center gap-4 bg-slate-900/50 px-6 py-8 text-center text-sm text-slate-400 rounded-xl border border-white/5">
-            Loading signature collections...
+        <div class="gallery-loading">
+            <p data-i18n="gallery.loadingSets"></p>
         </div>
     `;
+    window.AleregoI18n?.apply(setsContainer);
 
     const rawSets = await fetchCosplaySets();
-
-    // Check if there is a custom hero image assigned in the admin for this category
-    const heroSet = rawSets.find(s => s.categoryHeroImage);
-    if (heroSet && heroSet.categoryHeroImage) {
-        const heroImg = document.getElementById('category-hero-img');
-        if (heroImg) {
-            heroImg.src = "/media/" + heroSet.categoryHeroImage;
-        }
-    }
 
     const setGalleryItems = buildGalleryItemsFromSets(rawSets);
     const standaloneFeaturedItems = extractFeaturedImagesFromSets(rawSets);
 
     initGallery(standaloneFeaturedItems, {
         container: highlightsContainer,
-        emptyPrompt: 'Star some photos in the /admin portal'
+        emptyTitleKey: "gallery.emptyPhotosTitle",
+        emptyBodyKey: "gallery.emptyPhotosBody"
     });
 
     initGallery(setGalleryItems, {
         container: setsContainer,
-        emptyPrompt: 'Create a new set via /admin and add photos'
+        emptyTitleKey: "gallery.emptySetsTitle",
+        emptyBodyKey: "gallery.emptySetsBody"
     });
 }
 

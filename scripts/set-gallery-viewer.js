@@ -10,6 +10,10 @@ const ORIENTATION_RATIO_VALUES = {
     square: 1
 };
 
+function t(key, vars) {
+    return window.AleregoI18n ? window.AleregoI18n.t(key, vars) : key;
+}
+
 function ratioToNumber(ratio) {
     if (typeof ratio === 'number' && Number.isFinite(ratio) && ratio > 0) {
         return ratio;
@@ -79,11 +83,10 @@ class SetGalleryViewer {
     constructor() {
         this.images = [];
         this.currentPage = 1;
-        this.imagesPerPage = 8;
+        this.imagesPerPage = 12;
         this.currentImageIndex = 0;
         this.setData = null;
         this.referrerType = null;
-        this.FALLBACK_SETS = this.buildFallbackSets();
         this.orientationRatios = ORIENTATION_RATIOS;
         
         this.init();
@@ -111,6 +114,7 @@ class SetGalleryViewer {
         const urlParams = new URLSearchParams(window.location.search);
         const setId = urlParams.get('set');
         const type = urlParams.get('type') || 'cosplay';
+        document.documentElement.dataset.theme = type === 'corporate' ? 'corporate' : 'cosplay';
 
         this.referrerType = type;
         this.applyBackgroundGradient();
@@ -120,51 +124,26 @@ class SetGalleryViewer {
     async loadSetData(setId, type) {
         try {
             const manifestSets = await this.fetchFeaturedSets(type);
-            const fallbackSets = this.FALLBACK_SETS[type] || [];
-            const allSets = manifestSets.length ? manifestSets : fallbackSets;
-
-            console.log('SET VIEWER DEBUG:', {
-                requestedSlug: setId,
-                type,
-                totalSets: allSets.length,
-                availableSlugs: allSets.map(s => s.slug || s.id)
-            });
+            const allSets = (manifestSets.length ? manifestSets : [])
+                .filter((item) => !type || item.type === type || !item.type);
 
             if (!allSets.length) {
-                this.showError('No featured sets available yet');
+                this.showError(t('set.missing'));
                 return;
             }
 
-            let set = setId ? allSets.find((s) => {
-                const matches = (s.slug || s.id) === setId;
-                console.log(`Comparing: "${s.slug || s.id}" === "${setId}" → ${matches}`);
-                return matches;
-            }) : null;
+            const wanted = (setId || '').toLowerCase();
+            let set = wanted
+                ? allSets.find((item) => String(item.slug || item.id || '').toLowerCase() === wanted)
+                : allSets[0];
 
             if (!set) {
-                console.warn(`Set not found for slug "${setId}", defaulting to first set`);
-                const defaultSet = allSets[0];
-                
-                if (!defaultSet) {
-                    this.showError('No sets available to display');
-                    return;
-                }
-                
-                const defaultSlug = defaultSet.slug || defaultSet.id;
-
-                if (defaultSlug && setId !== defaultSlug) {
-                    console.log(`Updating URL from "${setId}" to "${defaultSlug}"`);
-                    this.updateUrlWithSet(defaultSlug, type);
-                }
-
-                set = defaultSet;
-            } else {
-                console.log(`✓ Found matching set:`, set.title);
+                this.showError(t('set.missing'));
+                return;
             }
 
-            if (!set) {
-                this.showError('Failed to load gallery set');
-                return;
+            if (set.slug && set.slug !== setId) {
+                this.updateUrlWithSet(set.slug, type);
             }
 
             this.setData = {
@@ -181,66 +160,8 @@ class SetGalleryViewer {
             this.renderPage();
             this.setupBackButton();
         } catch (error) {
-            console.error('Error loading set data:', error);
-            this.showError('Failed to load gallery set');
+            this.showError(t('set.missing'));
         }
-    }
-
-    buildFallbackSets() {
-        return {
-            cosplay: [
-                {
-                    slug: 'neon-dreams',
-                    title: 'Neon Dreams Collection',
-                    description: 'Cyberpunk cosplay series with LED lighting and futuristic aesthetics',
-                    category: 'Cosplay Series',
-                    images: [
-                        { thumbnail: '/images/cosplay/thumbnails/akiraflame-LHQ-03.jpg', full: '/images/cosplay/full/akiraflame-LHQ-03.jpg', title: 'Cyberpunk Portrait 1' },
-                        { thumbnail: '/images/cosplay/thumbnails/CBG25-brandy1-LHQ-01.jpg', full: '/images/cosplay/full/CBG25-brandy1-LHQ-01.jpg', title: 'Neon Glow Series' },
-                        { thumbnail: '/images/cosplay/thumbnails/celine-isa-LHQ-03.jpg', full: '/images/cosplay/full/celine-isa-LHQ-03.jpg', title: 'LED Character Study' },
-                        { thumbnail: '/images/cosplay/thumbnails/comofunII-LHQ-017.jpg', full: '/images/cosplay/full/comofunII-LHQ-017.jpg', title: 'Action Shot' }
-                    ]
-                },
-                {
-                    slug: 'convention-chronicles',
-                    title: 'Convention Chronicles',
-                    description: 'Best moments from CBG25 and other major conventions',
-                    category: 'Event Coverage',
-                    images: [
-                        { thumbnail: '/images/cosplay/thumbnails/CBG25-brandy2-LHQ-19.jpg', full: '/images/cosplay/full/CBG25-brandy2-LHQ-19.jpg', title: 'CBG25 Highlight' },
-                        { thumbnail: '/images/cosplay/thumbnails/CBG25-nibbo-LHQ-11.jpg', full: '/images/cosplay/full/CBG25-nibbo-LHQ-11.jpg', title: 'Character Showcase' },
-                        { thumbnail: '/images/cosplay/thumbnails/gardaconII-LHQ-097.jpg', full: '/images/cosplay/full/gardaconII-LHQ-097.jpg', title: 'Gardacon Moment' },
-                        { thumbnail: '/images/cosplay/thumbnails/SGT25-br4ndy.cos_-LHQ-02.jpg', full: '/images/cosplay/full/SGT25-br4ndy.cos_-LHQ-02.jpg', title: 'SGT25 Feature' }
-                    ]
-                }
-            ],
-            corporate: [
-                {
-                    slug: 'executive-summit',
-                    title: 'Executive Summit 2024',
-                    description: 'Leadership portraits, keynote speeches, and networking events',
-                    category: 'Corporate Events',
-                    images: [
-                        { thumbnail: '/images/corporate/thumbnails/corporate-1005.jpg', full: '/images/corporate/full/corporate-1005.jpg', title: 'Executive Portrait' },
-                        { thumbnail: '/images/corporate/thumbnails/corporate-1032.jpg', full: '/images/corporate/full/corporate-1032.jpg', title: 'Keynote Moment' },
-                        { thumbnail: '/images/corporate/thumbnails/corporate-1035.jpg', full: '/images/corporate/full/corporate-1035.jpg', title: 'Panel Discussion' },
-                        { thumbnail: '/images/corporate/thumbnails/corporate-1043.jpg', full: '/images/corporate/full/corporate-1043.jpg', title: 'Leadership Team' }
-                    ]
-                },
-                {
-                    slug: 'innovation-lab',
-                    title: 'Innovation Lab Opening',
-                    description: 'Grand opening event with product launches and demonstrations',
-                    category: 'Product Launch',
-                    images: [
-                        { thumbnail: '/images/corporate/thumbnails/corporate-1032.jpg', full: '/images/corporate/full/corporate-1032.jpg', title: 'Lab Tour' },
-                        { thumbnail: '/images/corporate/thumbnails/corporate-1035.jpg', full: '/images/corporate/full/corporate-1035.jpg', title: 'Product Demo' },
-                        { thumbnail: '/images/corporate/thumbnails/corporate-1036.jpg', full: '/images/corporate/full/corporate-1036.jpg', title: 'Tech Showcase' },
-                        { thumbnail: '/images/corporate/thumbnails/corporate-1049.jpg', full: '/images/corporate/full/corporate-1049.jpg', title: 'Innovation Awards' }
-                    ]
-                }
-            ]
-        };
     }
 
     async fetchFeaturedSets(type) {
@@ -275,7 +196,6 @@ class SetGalleryViewer {
                 }
             }).filter(Boolean);
         } catch (error) {
-            console.warn(`Featured API unavailable for ${type}, using fallback data.`, error);
             return [];
         }
     }
@@ -342,49 +262,49 @@ class SetGalleryViewer {
         if (!figure || !imageEl) return;
 
         const orientation = hint || resolveOrientationFromDimensions(imageEl.naturalWidth, imageEl.naturalHeight);
-        const ratio = this.orientationRatios[orientation] || this.orientationRatios.landscape;
-        const ratioValue = ratioToNumber(ratio) || ORIENTATION_RATIO_VALUES.landscape;
-
         figure.dataset.orientation = orientation;
-        figure.dataset.aspectRatio = ratioValue.toFixed(6);
-        figure.style.aspectRatio = ratio;
-        figure.style.gridColumn = '';
-
         imageEl.dataset.orientation = orientation;
-        imageEl.dataset.aspectRatio = ratioValue.toFixed(6);
-        imageEl.style.aspectRatio = ratio;
+        figure.style.aspectRatio = 'auto';
+        imageEl.style.aspectRatio = 'auto';
         imageEl.style.width = '100%';
         imageEl.style.height = '100%';
+
+        if (imageEl.naturalWidth && imageEl.naturalHeight) {
+            const ratio = imageEl.naturalWidth / imageEl.naturalHeight;
+            figure.dataset.aspectRatio = ratio.toFixed(6);
+            imageEl.dataset.aspectRatio = ratio.toFixed(6);
+        }
     }
 
     setupBackButton() {
         const backButton = document.getElementById('back-button');
         if (!backButton) return;
 
-        backButton.onclick = () => {
-            if (this.referrerType === 'cosplay') {
-                window.location.href = '/cosplay/';
-            } else if (this.referrerType === 'corporate') {
-                window.location.href = '/corporate/';
-            } else {
-                window.location.href = '/';
-            }
-        };
+        if (this.referrerType === 'cosplay') {
+            backButton.setAttribute('href', '/cosplay/');
+        } else if (this.referrerType === 'corporate') {
+            backButton.setAttribute('href', '/corporate/');
+        } else {
+            backButton.setAttribute('href', '/');
+        }
     }
 
     updatePageInfo() {
         if (!this.setData) return;
 
         // Update page title and content
-        document.getElementById('gallery-title').textContent = `${this.setData.title} · Alerego.dev`;
-        document.getElementById('gallery-category').textContent = this.setData.category || 'Gallery Set';
+        document.getElementById('gallery-title').textContent = `${this.setData.title} · Alerego`;
+        document.getElementById('gallery-category').textContent = this.setData.category || t('set.category');
         document.getElementById('gallery-main-title').textContent = this.setData.title;
         document.getElementById('gallery-description').textContent = this.setData.description;
         
-        // Update pagination info
         const totalPages = Math.max(1, Math.ceil(this.images.length / this.imagesPerPage));
-        document.getElementById('page-info').textContent = `Page ${Math.min(this.currentPage, totalPages)} of ${totalPages}`;
-        document.getElementById('image-count').textContent = `${this.images.length} image${this.images.length === 1 ? '' : 's'}`;
+        document.getElementById('page-info').textContent = t('set.page', {
+            current: Math.min(this.currentPage, totalPages),
+            total: totalPages
+        });
+        const countKey = this.images.length === 1 ? 'set.countOne' : 'set.count';
+        document.getElementById('image-count').textContent = t(countKey, { n: this.images.length });
         
         // Update pagination buttons
         document.getElementById('prev-page').disabled = this.currentPage === 1 || !this.images.length;
@@ -397,9 +317,9 @@ class SetGalleryViewer {
         if (!this.images.length) {
             resetOrderedGridLayout(grid);
             grid.innerHTML = `
-                <div class="col-span-full rounded-xl border border-white/10 bg-white/[0.05] px-6 py-16 text-center text-sm text-white/70">
-                    <p class="text-base font-semibold text-white">No images in this set yet</p>
-                    <p>Add matching files under the set directory and regenerate manifests.</p>
+                <div class="gallery-empty">
+                    <p><strong>${t('set.emptyTitle')}</strong></p>
+                    <p>${t('set.emptyBody')}</p>
                 </div>
             `;
             return;
@@ -413,19 +333,15 @@ class SetGalleryViewer {
         pageImages.forEach((image, index) => {
             const globalIndex = startIndex + index;
             const figure = document.createElement('figure');
-            figure.className = 'group relative mb-6 overflow-hidden rounded-md border border-white/10 bg-white/[0.05] shadow-xl shadow-black/40 transition-all duration-500 hover:-translate-y-2 hover:border-white/40 hover:shadow-2xl hover:shadow-purple-500/30 cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/50';
+            figure.className = 'gallery-card';
             figure.setAttribute('role', 'button');
             figure.setAttribute('tabindex', '0');
 
             const imageEl = document.createElement('img');
             imageEl.src = image.thumbnail || image.full;
             imageEl.alt = image.title || 'Gallery image';
-            imageEl.loading = 'lazy';
-            imageEl.className = 'h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105';
-
-            const defaultRatio = this.orientationRatios.landscape;
-            figure.style.aspectRatio = defaultRatio;
-            imageEl.style.aspectRatio = defaultRatio;
+            imageEl.loading = 'eager';
+            imageEl.className = 'gallery-card__image';
 
             const orientationHint = (image.orientation || '').toString().toLowerCase();
             const applyOrientation = () => this.applyOrientationStyles(figure, imageEl, orientationHint);
@@ -449,8 +365,23 @@ class SetGalleryViewer {
             grid.appendChild(figure);
         });
 
-        // Apply CSS masonry layout
-        grid.classList.add('gallery-masonry');
+        const layout = () => applyOrderedGridLayout(grid, {
+            targetRowHeight: 280,
+            maxRowHeight: 420,
+            gap: 10,
+            layoutStyle: 'justified'
+        });
+
+        const pending = Array.from(grid.querySelectorAll('img')).filter((img) => !img.complete || !img.naturalWidth);
+        if (!pending.length) {
+            layout();
+            return;
+        }
+
+        Promise.all(pending.map((img) => img.decode ? img.decode().catch(() => {}) : new Promise((resolve) => {
+            img.addEventListener('load', resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+        }))).then(layout);
     }
 
     previousPage() {
@@ -487,16 +418,14 @@ class SetGalleryViewer {
     img.alt = image.title || 'Gallery image';
     caption.textContent = '';
         
-        lightbox.classList.remove('hidden');
-        lightbox.classList.add('flex');
-        document.body.classList.add('overflow-hidden');
+        lightbox.classList.add('is-open');
+        document.body.classList.add('is-locked');
     }
 
     closeLightbox() {
         const lightbox = document.getElementById('lightbox');
-        lightbox.classList.remove('flex');
-        lightbox.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
+        lightbox.classList.remove('is-open');
+        document.body.classList.remove('is-locked');
     }
 
     previousImage() {
@@ -519,7 +448,7 @@ class SetGalleryViewer {
 
     handleKeyPress(e) {
         const lightbox = document.getElementById('lightbox');
-        const isLightboxVisible = !lightbox.classList.contains('hidden');
+        const isLightboxVisible = lightbox.classList.contains('is-open');
         
         if (isLightboxVisible) {
             switch (e.key) {
@@ -550,13 +479,12 @@ class SetGalleryViewer {
         if (grid) {
             resetOrderedGridLayout(grid);
             grid.innerHTML = `
-                <div class="col-span-full flex flex-col items-center justify-center gap-4 rounded-xl border border-red-500/20 bg-red-500/5 px-6 py-20 text-center">
-                    <p class="text-xl font-semibold text-red-400">${message}</p>
-                    <button onclick="history.back()" class="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-slate-950">
-                        Go Back
-                    </button>
+                <div class="gallery-error">
+                    <p><strong>${message}</strong></p>
+                    <button type="button" class="btn btn--ghost" id="gallery-error-back">${t('set.goBack')}</button>
                 </div>
             `;
+            document.getElementById('gallery-error-back')?.addEventListener('click', () => history.back());
         }
 
         const titleEl = document.getElementById('gallery-main-title');
@@ -572,19 +500,19 @@ class SetGalleryViewer {
         }
 
         if (descEl) {
-            descEl.textContent = 'Select a featured collection from the cosplay or corporate page to continue.';
+            descEl.textContent = t('set.missingBody');
         }
 
         if (categoryEl) {
-            categoryEl.textContent = this.referrerType === 'corporate' ? 'Corporate feature' : 'Cosplay feature';
+            categoryEl.textContent = this.referrerType === 'corporate' ? t('set.feature.corporate') : t('set.feature.cosplay');
         }
 
         if (pageInfoEl) {
-            pageInfoEl.textContent = 'Page 0 of 0';
+            pageInfoEl.textContent = t('set.page', { current: 0, total: 0 });
         }
 
         if (imageCountEl) {
-            imageCountEl.textContent = '0 images';
+            imageCountEl.textContent = t('set.count', { n: 0 });
         }
 
         if (prevButton) {
@@ -599,5 +527,9 @@ class SetGalleryViewer {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new SetGalleryViewer();
+    const viewer = new SetGalleryViewer();
+    window.addEventListener('alerego:lang', () => {
+        if (viewer.setData) viewer.updatePageInfo();
+        else viewer.showError(t('set.missing'));
+    });
 });

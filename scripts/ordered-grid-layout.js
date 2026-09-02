@@ -2,12 +2,12 @@
     const DEFAULTS = {
         itemSelector: 'figure',
         imageSelector: 'img',
-        gap: 16,
-        targetRowHeight: 360,
-        maxRowHeight: 560,
-        lastRowMinHeight: 220,
+        gap: 12,
+        targetRowHeight: 260,
+        maxRowHeight: 380,
+        lastRowMinHeight: 160,
         lastRowAlign: 'left',
-        layoutStyle: 'dynamic-mosaic',
+        layoutStyle: 'justified',
         itemsPerRowMobile: 1,
         itemsPerRowTablet: 2,
         itemsPerRowDesktop: 3
@@ -51,6 +51,10 @@
     }
 
     function resolveRatio(item, imageEl) {
+        if (imageEl?.naturalWidth && imageEl?.naturalHeight) {
+            return imageEl.naturalWidth / imageEl.naturalHeight;
+        }
+
         const ratioFromItem = parseRatio(item?.dataset?.aspectRatio);
         if (ratioFromItem) {
             return ratioFromItem;
@@ -59,20 +63,6 @@
         const ratioFromImageDataset = parseRatio(imageEl?.dataset?.aspectRatio);
         if (ratioFromImageDataset) {
             return ratioFromImageDataset;
-        }
-
-        if (imageEl?.naturalWidth && imageEl?.naturalHeight) {
-            return imageEl.naturalWidth / imageEl.naturalHeight;
-        }
-
-        const ratioFromItemStyle = parseRatio(item?.style?.aspectRatio || '');
-        if (ratioFromItemStyle) {
-            return ratioFromItemStyle;
-        }
-
-        const ratioFromImageStyle = parseRatio(imageEl?.style?.aspectRatio || '');
-        if (ratioFromImageStyle) {
-            return ratioFromImageStyle;
         }
 
         const orientationHint = item?.dataset?.orientation || imageEl?.dataset?.orientation || 'landscape';
@@ -215,21 +205,112 @@
     }
 
     function applyContainerStyles(container, gap) {
-        // Neutralized for CSS-columns masonry migration
-        // Container should rely on CSS classes, not inline styles
-        return;
+        container.style.display = 'flex';
+        container.style.flexWrap = 'wrap';
+        container.style.alignItems = 'flex-start';
+        container.style.alignContent = 'flex-start';
+        container.style.justifyContent = 'flex-start';
+        container.style.gap = `${gap}px`;
+        container.style.width = '100%';
+        container.dataset.layoutMode = 'justified';
     }
 
-    function applyItemStyles(entry, rowHeight) {
-        // Neutralized for CSS-columns masonry migration
-        // Items should rely on CSS classes, not inline styles
-        return;
+    function applyItemStyles(entry, widthPx, heightPx) {
+        entry.item.style.flex = `0 0 ${widthPx}px`;
+        entry.item.style.width = `${widthPx}px`;
+        entry.item.style.height = `${heightPx}px`;
+        entry.item.style.maxWidth = 'none';
+        entry.item.style.minWidth = '0';
+        entry.item.style.margin = '0';
+        entry.item.style.gridColumn = '';
+        entry.item.style.gridRow = '';
+        entry.item.style.aspectRatio = 'auto';
+
+        if (entry.imageEl) {
+            entry.imageEl.style.maxWidth = 'none';
+            entry.imageEl.style.width = '100%';
+            entry.imageEl.style.height = '100%';
+            entry.imageEl.style.objectFit = 'cover';
+            entry.imageEl.style.aspectRatio = 'auto';
+        }
+    }
+
+    function layoutRow(row, containerWidth, gap, config) {
+        const ratioSum = row.reduce((sum, entry) => sum + entry.ratio, 0);
+        const gaps = gap * Math.max(0, row.length - 1);
+        const inner = Math.max(1, containerWidth - gaps);
+        let height = inner / ratioSum;
+
+        if (!Number.isFinite(height) || height <= 0) {
+            height = config.targetRowHeight;
+        }
+
+        height = Math.min(height, config.maxRowHeight);
+        height = Math.max(height, 120);
+
+        const rowHeight = Math.round(height);
+        let remaining = inner;
+
+        row.forEach((entry, index) => {
+            const leftover = row.length - index;
+            const ideal = Math.round(inner * (entry.ratio / ratioSum));
+            const widthPx = leftover === 1 ? Math.max(48, remaining) : Math.min(remaining - 48 * (leftover - 1), Math.max(48, ideal));
+            remaining -= widthPx;
+            applyItemStyles(entry, widthPx, rowHeight);
+        });
+    }
+
+    function packJustifiedRows(entries, width, gap, config) {
+        const targetH = toResponsiveTarget(config.targetRowHeight, width);
+        const rows = [];
+        let row = [];
+        let ratioSum = 0;
+
+        entries.forEach((entry) => {
+            const nextRatio = ratioSum + entry.ratio;
+            const nextCount = row.length + 1;
+            const nextGaps = gap * Math.max(0, nextCount - 1);
+            const nextHeight = (width - nextGaps) / nextRatio;
+
+            if (row.length > 0 && nextHeight < targetH) {
+                rows.push(row);
+                row = [entry];
+                ratioSum = entry.ratio;
+                return;
+            }
+
+            row.push(entry);
+            ratioSum = nextRatio;
+        });
+
+        if (row.length) {
+            rows.push(row);
+        }
+
+        if (rows.length >= 2 && rows[rows.length - 1].length === 1) {
+            const orphan = rows.pop()[0];
+            rows[rows.length - 1].push(orphan);
+        }
+
+        return rows;
     }
 
     function layoutContainer(container, config) {
-        // Neutralized for CSS-columns masonry migration
-        // Layout is now handled entirely by CSS columns
-        return;
+        const width = Math.floor(container.getBoundingClientRect().width);
+        if (!width) {
+            return;
+        }
+
+        const gap = config.gap;
+        applyContainerStyles(container, gap);
+
+        const entries = collectEntries(container, config);
+        if (!entries.length) {
+            return;
+        }
+
+        const rows = packJustifiedRows(entries, width, gap, config);
+        rows.forEach((row) => layoutRow(row, width, gap, config));
     }
 
     function bindPendingImageListeners(container, config, scheduleLayout) {

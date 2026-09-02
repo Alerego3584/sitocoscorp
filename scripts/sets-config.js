@@ -89,11 +89,12 @@ function initDynamicGrid(images) {
         }
 
         container.innerHTML = `
-            <div class="col-span-full flex flex-col items-center justify-center gap-4 rounded-xl border border-white/10 bg-white/[0.05] px-6 py-20 text-center text-sm text-white/70 m-8">
-                <p class="mb-4 text-xl font-semibold text-white">Featured Sets Coming Soon</p>
-                <p class="max-w-md text-base text-white/70">Add your featured sets in <code class="rounded bg-white/10 px-1.5 py-0.5 text-xs font-mono">scripts/sets-config.js</code></p>
+            <div class="gallery-empty">
+                <p><strong data-i18n="gallery.emptySetsTitle"></strong></p>
+                <p data-i18n="gallery.emptySetsBody"></p>
             </div>
         `;
+        window.AleregoI18n?.apply(container);
         return;
     }
 
@@ -104,9 +105,34 @@ function initDynamicGrid(images) {
 
     initGallery(normalizedImages, {
         container,
-        emptyPrompt: 'sets-config.js'
+        emptyTitleKey: "gallery.emptySetsTitle",
+        emptyBodyKey: "gallery.emptySetsBody"
     });
 }
 
 // Initialize the dynamic grid
-initDynamicGrid(FEATURED_SETS);
+async function loadFeaturedSets() {
+    try {
+        const response = await fetch('/api/public/sets', { cache: 'no-store' });
+        if (!response.ok) throw new Error('unavailable');
+        const data = await response.json();
+        const sets = Array.isArray(data?.sets) ? data.sets : [];
+        return sets
+            .filter((set) => set && set.images && set.images.length)
+            .map((set) => {
+                const full = `/media/${set.images[0]}`;
+                return {
+                    title: set.title,
+                    description: set.description,
+                    thumbnail: full.replace('/full/', '/thumbnails/'),
+                    full,
+                    href: `/set-gallery?set=${encodeURIComponent(set.slug)}&type=${encodeURIComponent(set.type || 'cosplay')}`,
+                    type: set.type || 'cosplay'
+                };
+            });
+    } catch {
+        return [];
+    }
+}
+
+loadFeaturedSets().then(initDynamicGrid);
