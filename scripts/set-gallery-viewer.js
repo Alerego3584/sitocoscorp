@@ -209,13 +209,12 @@ class SetGalleryViewer {
             if (type) {
                 url.searchParams.set('type', type);
             }
-            window.history.replaceState({}, '', `${url.pathname}${url.search}`);
+            window.history.replaceState({}, '', `/set-gallery/${url.search}`);
         } catch (error) {
             const encodedSlug = encodeURIComponent(slug);
             const encodedType = type ? `&type=${encodeURIComponent(type)}` : '';
             const query = `?set=${encodedSlug}${encodedType}`;
-            const path = window.location.pathname || '/set-gallery.html';
-            window.history.replaceState({}, '', `${path}${query}`);
+            window.history.replaceState({}, '', `/set-gallery/${query}`);
         }
     }
 
@@ -264,8 +263,6 @@ class SetGalleryViewer {
         const orientation = hint || resolveOrientationFromDimensions(imageEl.naturalWidth, imageEl.naturalHeight);
         figure.dataset.orientation = orientation;
         imageEl.dataset.orientation = orientation;
-        figure.style.aspectRatio = 'auto';
-        imageEl.style.aspectRatio = 'auto';
         imageEl.style.width = '100%';
         imageEl.style.height = '100%';
 
@@ -343,14 +340,20 @@ class SetGalleryViewer {
             imageEl.loading = 'eager';
             imageEl.className = 'gallery-card__image';
 
-            const orientationHint = (image.orientation || '').toString().toLowerCase();
-            const applyOrientation = () => this.applyOrientationStyles(figure, imageEl, orientationHint);
+            const rawHint = (image.orientation || '').toString().toLowerCase();
+            const orientationHint = rawHint === 'portrait' || rawHint === 'square' || rawHint === 'landscape'
+                ? rawHint
+                : 'landscape';
+            figure.dataset.orientation = orientationHint;
+            imageEl.dataset.orientation = orientationHint;
+            this.applyOrientationStyles(figure, imageEl, orientationHint);
 
+            const applyMeasured = () => this.applyOrientationStyles(figure, imageEl);
             if (imageEl.complete && imageEl.naturalWidth) {
-                applyOrientation();
+                applyMeasured();
             } else {
-                imageEl.addEventListener('load', applyOrientation, { once: true });
-                imageEl.addEventListener('error', applyOrientation, { once: true });
+                imageEl.addEventListener('load', applyMeasured, { once: true });
+                imageEl.addEventListener('error', () => this.applyOrientationStyles(figure, imageEl, orientationHint), { once: true });
             }
 
             figure.addEventListener('click', () => this.openLightbox(globalIndex));
@@ -365,23 +368,12 @@ class SetGalleryViewer {
             grid.appendChild(figure);
         });
 
-        const layout = () => applyOrderedGridLayout(grid, {
+        applyOrderedGridLayout(grid, {
             targetRowHeight: 280,
             maxRowHeight: 420,
             gap: 10,
             layoutStyle: 'justified'
         });
-
-        const pending = Array.from(grid.querySelectorAll('img')).filter((img) => !img.complete || !img.naturalWidth);
-        if (!pending.length) {
-            layout();
-            return;
-        }
-
-        Promise.all(pending.map((img) => img.decode ? img.decode().catch(() => {}) : new Promise((resolve) => {
-            img.addEventListener('load', resolve, { once: true });
-            img.addEventListener('error', resolve, { once: true });
-        }))).then(layout);
     }
 
     previousPage() {

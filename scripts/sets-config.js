@@ -126,7 +126,7 @@ async function loadFeaturedSets() {
                     description: set.description,
                     thumbnail: full.replace('/full/', '/thumbnails/'),
                     full,
-                    href: `/set-gallery?set=${encodeURIComponent(set.slug)}&type=${encodeURIComponent(set.type || 'cosplay')}`,
+                    href: `/set-gallery/?set=${encodeURIComponent(set.slug)}&type=${encodeURIComponent(set.type || 'cosplay')}`,
                     type: set.type || 'cosplay'
                 };
             });

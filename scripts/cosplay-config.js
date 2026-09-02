@@ -35,7 +35,7 @@ function buildGalleryItemsFromSets(sets) {
             description: set.description || 'A curated collection.',
             thumbnail: coverImageThumb,
             full: coverImageFull,
-            href: "/set-gallery?set=" + encodeURIComponent(set.slug) + "&type=cosplay",
+            href: "/set-gallery/?set=" + encodeURIComponent(set.slug) + "&type=cosplay",
             category: CATEGORY,
             slug: set.slug,
             label: 'Cosplay',

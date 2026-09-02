@@ -176,12 +176,12 @@ async function loadHomeGalleryItems() {
 
 function buildSetGalleryUrl(slug, type) {
     if (!slug) {
-        return '/set-gallery';
+        return '/set-gallery/';
     }
 
     const encodedSlug = encodeURIComponent(slug);
     const encodedType = encodeURIComponent(type || 'cosplay');
-    return `${window.location.origin}/set-gallery?set=${encodedSlug}&type=${encodedType}`;
+    return `/set-gallery/?set=${encodedSlug}&type=${encodedType}`;
 }
 
 async function hydrateHomeGallery() {

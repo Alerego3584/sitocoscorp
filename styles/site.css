@@ -1349,6 +1349,28 @@ button {
   cursor: pointer;
 }
 
+.gallery-grid:not([data-layout-mode="justified"]) .gallery-card,
+[data-gallery-grid]:not([data-layout-mode="justified"]) figure,
+#image-grid:not([data-layout-mode="justified"]) figure {
+  flex: 1 1 220px;
+  width: 220px;
+  max-width: calc(50% - 10px);
+  max-height: 280px;
+  aspect-ratio: 16 / 10;
+}
+
+.gallery-grid:not([data-layout-mode="justified"]) .gallery-card[data-orientation="portrait"],
+[data-gallery-grid]:not([data-layout-mode="justified"]) figure[data-orientation="portrait"],
+#image-grid:not([data-layout-mode="justified"]) figure[data-orientation="portrait"] {
+  aspect-ratio: 3 / 4;
+}
+
+.gallery-grid:not([data-layout-mode="justified"]) .gallery-card[data-orientation="square"],
+[data-gallery-grid]:not([data-layout-mode="justified"]) figure[data-orientation="square"],
+#image-grid:not([data-layout-mode="justified"]) figure[data-orientation="square"] {
+  aspect-ratio: 1 / 1;
+}
+
 .gallery-card img,
 [data-gallery-grid] figure img,
 #image-grid figure img {

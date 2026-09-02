@@ -224,6 +224,7 @@ function setupDragAndDrop() {
 
 const MAX_HOME_SELECTOR = 1;
 const MAX_PAGE_HERO = 4;
+const MAX_LANDING_INTRO = 3;
 
 function attrPath(path) {
     return String(path).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
@@ -249,6 +250,7 @@ function renderCoverSelection(set) {
 
     set.featuredImages = set.featuredImages || [];
     set.homeSelectorImages = set.homeSelectorImages || [];
+    set.landingIntroImages = set.landingIntroImages || [];
     set.categoryHeroImages = set.categoryHeroImages || (set.categoryHeroImage ? [set.categoryHeroImage] : []);
 
     els.coverSelectionArea.classList.remove('hidden');
@@ -257,6 +259,7 @@ function renderCoverSelection(set) {
         const isCover = index === 0;
         const isFeatured = set.featuredImages.includes(imgPath);
         const isHome = set.homeSelectorImages.includes(imgPath);
+        const isLanding = set.landingIntroImages.includes(imgPath);
         const thumb = `/media/${imgPath.replace('/full/', '/thumbnails/')}`;
 
         return `
@@ -268,6 +271,7 @@ function renderCoverSelection(set) {
             <div class="flex flex-col gap-1 p-2">
                 <button type="button" onclick="toggleFeaturedImage(event, '${safe}')" class="w-full py-2 text-xs rounded ${isFeatured ? 'bg-pink-500 text-white' : 'bg-slate-800 text-slate-300'}" title="${t('admin.gridTitle')}">${t('admin.grid')}</button>
                 <button type="button" data-home-path="${safe}" onclick="toggleHomeSelector(event, '${safe}')" class="w-full py-2 text-xs rounded ${isHome ? 'bg-emerald-500 text-slate-950' : 'bg-slate-800 text-slate-300'}" title="${t('admin.homeTitle')}">${t('admin.home')}</button>
+                <button type="button" onclick="toggleLandingIntro(event, '${safe}')" class="w-full py-2 text-xs rounded ${isLanding ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-300'}" title="${t('admin.landingTitle')}">${t('admin.landing')}</button>
             </div>
         </div>
         `;
@@ -285,6 +289,18 @@ function renderCoverSelection(set) {
         };
         probe.src = `/media/${path}`;
     });
+
+    if (window.AleregoI18n) window.AleregoI18n.apply(els.coverSelectionArea);
+}
+
+function countLandingIntro(exceptPath) {
+    const seen = new Set();
+    currentSets.forEach((item) => {
+        (Array.isArray(item.landingIntroImages) ? item.landingIntroImages : []).forEach((path) => {
+            if (path && path !== exceptPath) seen.add(path);
+        });
+    });
+    return seen.size;
 }
 
 function setCoverImage(e, imgPath) {
@@ -382,6 +398,27 @@ function toggleHomeSelector(e, imgPath) {
         alert(t('admin.readFail'));
     };
     probe.src = `/media/${imgPath}`;
+}
+
+function toggleLandingIntro(e, imgPath) {
+    e.preventDefault();
+    if (!activeEditSetId) return;
+    const set = currentSets.find(s => s.id === activeEditSetId);
+    if (!set) return;
+
+    set.landingIntroImages = set.landingIntroImages || [];
+    const idx = set.landingIntroImages.indexOf(imgPath);
+    if (idx > -1) {
+        set.landingIntroImages.splice(idx, 1);
+    } else if (countLandingIntro(imgPath) >= MAX_LANDING_INTRO) {
+        alert(t('admin.landingLimit', { n: MAX_LANDING_INTRO }));
+        return;
+    } else {
+        set.landingIntroImages.push(imgPath);
+    }
+
+    renderCoverSelection(set);
+    saveAllData();
 }
 
 function editSet(id) {

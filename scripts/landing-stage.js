@@ -30,44 +30,58 @@
         fallback: []
       });
 
-      const introMix = [
-        homeCosplay[0] || fallbackCosplay[0],
-        homeCorporate[0] || fallbackCorporate[0],
-        homeCosplay[1] || homeCorporate[1] || fallbackCosplay[1] || fallbackCorporate[1],
-        fallbackCosplay[2],
-        fallbackCorporate[2]
-      ].filter(Boolean);
+      const introSeen = new Set();
+      const introPaths = [];
+      ["cosplay", "corporate"].forEach((type) => {
+        site.collectPaths(sets, type, "landingIntroImages").forEach((path) => {
+          if (path && !introSeen.has(path)) {
+            introSeen.add(path);
+            introPaths.push(path);
+          }
+        });
+      });
+
       const introField = document.querySelector(".intro-field");
       if (introField) {
-        const measured = [];
-        for (const path of introMix.slice(0, 8)) {
-          const url = site.mediaUrl(path);
-          measured.push({
-            path,
-            url,
-            landscape: await site.isLandscapeUrl(url)
-          });
-        }
-        const portraits = measured.filter((item) => !item.landscape);
-        const lands = measured.filter((item) => item.landscape);
-        const slots = [
-          portraits[0] || measured[0],
-          portraits[1] || portraits[0] || measured[1],
-          lands[0] || measured[2] || measured[0]
-        ].filter(Boolean);
-
         introField.innerHTML = "";
-        slots.forEach((item, index) => {
-          const img = document.createElement("img");
-          img.className = `field-shot field-shot--${index + 1} ${item.landscape ? "is-landscape" : "is-portrait"}`;
-          img.src = item.url;
-          img.alt = "";
-          img.decoding = "async";
-          introField.appendChild(img);
-        });
         const grain = document.createElement("div");
         grain.className = "field-grain";
         grain.setAttribute("aria-hidden", "true");
+
+        if (introPaths.length) {
+          const measured = [];
+          for (const path of introPaths.slice(0, 3)) {
+            const url = site.mediaUrl(path);
+            measured.push({
+              path,
+              url,
+              landscape: await site.isLandscapeUrl(url)
+            });
+          }
+          const portraits = measured.filter((item) => !item.landscape);
+          const lands = measured.filter((item) => item.landscape);
+          const used = new Set();
+          const slots = [];
+          const take = (item) => {
+            if (!item || used.has(item.path) || slots.length >= 3) return;
+            used.add(item.path);
+            slots.push(item);
+          };
+          take(portraits[0]);
+          take(portraits[1]);
+          take(lands[0]);
+          measured.forEach(take);
+
+          slots.forEach((item, index) => {
+            const img = document.createElement("img");
+            img.className = `field-shot field-shot--${index + 1} ${item.landscape ? "is-landscape" : "is-portrait"}`;
+            img.src = item.url;
+            img.alt = "";
+            img.decoding = "async";
+            introField.appendChild(img);
+          });
+        }
+
         introField.appendChild(grain);
       }
     })

@@ -182,13 +182,19 @@ function initGallery(imageConfig = [], options = {}) {
         coverImage.className = 'gallery-card__image';
         coverImage.dataset.sectionType = resolvedType;
 
-        const orientationHint = (image.orientation || '').toString().toLowerCase();
-        const applyOrientation = () => applyOrientationStyles({ figure, imageEl: coverImage, hint: orientationHint });
+        const rawHint = (image.orientation || '').toString().toLowerCase();
+        const orientationHint = rawHint === 'portrait' || rawHint === 'square' || rawHint === 'landscape'
+            ? rawHint
+            : 'landscape';
+        figure.dataset.orientation = orientationHint;
+        coverImage.dataset.orientation = orientationHint;
+        applyOrientationStyles({ figure, imageEl: coverImage, hint: orientationHint });
 
+        const applyMeasuredOrientation = () => applyOrientationStyles({ figure, imageEl: coverImage });
         if (coverImage.complete && coverImage.naturalWidth) {
-            applyOrientation();
+            applyMeasuredOrientation();
         } else {
-            coverImage.addEventListener('load', applyOrientation, { once: true });
+            coverImage.addEventListener('load', applyMeasuredOrientation, { once: true });
             coverImage.addEventListener('error', () => applyOrientationStyles({ figure, imageEl: coverImage, hint: orientationHint }), { once: true });
         }
 
@@ -220,21 +226,10 @@ function initGallery(imageConfig = [], options = {}) {
         ? { targetRowHeight: 230, maxRowHeight: 320, gap: 10, layoutStyle: 'justified' }
         : { targetRowHeight: 260, maxRowHeight: 380, gap: 10, layoutStyle: 'justified' };
 
-    const runLayout = () => applyOrderedGridLayout(gallery, {
+    applyOrderedGridLayout(gallery, {
         ...defaultLayout,
         ...orderedLayoutOptions
     });
-
-    const pending = Array.from(gallery.querySelectorAll('img')).filter((img) => !img.complete || !img.naturalWidth);
-    if (!pending.length) {
-        runLayout();
-        return;
-    }
-
-    Promise.all(pending.map((img) => (img.decode ? img.decode().catch(() => {}) : new Promise((resolve) => {
-        img.addEventListener('load', resolve, { once: true });
-        img.addEventListener('error', resolve, { once: true });
-    })))).then(runLayout);
 }
 
 function openLightbox(imageArray, index) {
