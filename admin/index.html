@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Admin · Alerego.dev</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    'sans': ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        brand: '#38bdf8',
+                        midnight: '#020817'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hidden-view { display: none !important; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <!-- Background styling -->
+    <div class="fixed inset-0 -z-10 bg-slate-950"></div>
+
+    <!-- Login View -->
+    <div id="login-view" class="flex min-h-screen items-center justify-center p-4">
+        <div class="w-full max-w-sm rounded-xl border border-white/10 bg-slate-900/60 p-8 shadow-2xl backdrop-blur-xl">
+            <div class="mb-8 text-center">
+                <h1 class="text-2xl font-bold text-white">Gallery Admin</h1>
+                <p class="mt-2 text-sm text-slate-400">Enter master password to continue</p>
+            </div>
+            
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <input type="password" id="password" required
+                        class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                        placeholder="••••••••">
+                </div>
+                <button type="submit"
+                    class="w-full rounded-xl bg-brand px-4 py-3 font-semibold text-slate-950 transition hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-slate-900">
+                    Sign In
+                </button>
+                <div id="login-error" class="hidden text-center text-sm text-red-400"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboard-view" class="hidden-view min-h-screen flex-col">
+        <header class="border-b border-white/10 bg-slate-900/50 backdrop-blur-xl">
+            <div class="mx-auto flex max-w-7xl items-center justify-between p-4 px-6">
+                <h1 class="text-xl font-bold text-white">Gallery CMS</h1>
+                <div class="flex gap-4">
+                    <button id="save-all-btn" class="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400">Save Changes</button>
+                    <button id="logout-btn" class="text-sm font-medium text-slate-400 hover:text-white">Sign out</button>
+                </div>
+            </div>
+        </header>
+        
+        <main class="mx-auto w-full max-w-7xl flex-1 p-6">
+            <div class="mb-8 flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-semibold">Manage Sets</h2>
+                    <p class="text-sm text-slate-400 mt-1">Drag and drop sets to change the order they appear on your site.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="/cosplay/" class="rounded-lg bg-white/5 px-4 py-2 text-sm font-medium hover:bg-white/20 transition">Cosplay</a>
+                    <a href="/corporate/" class="rounded-lg bg-white/5 px-4 py-2 text-sm font-medium hover:bg-white/20 transition">Corporate</a>
+                    <button id="create-set-btn" class="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium hover:bg-white/20 transition">
+                        + Create New Set
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div id="content-area" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Data will be loaded here via JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Modal (Hidden initially) -->
+    <div id="edit-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4">
+        <div class="w-full max-w-lg rounded-2xl border border-white/10 bg-slate-900 p-6 shadow-2xl relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-slate-400 hover:text-white">&times;</button>
+            <h3 class="text-xl font-semibold mb-4" id="modal-heading">Edit Set Properties</h3>
+            
+            <div class="space-y-4">
+                <div id="new-set-fields" class="hidden grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Type</label>
+                        <select id="modal-type" class="w-full rounded-lg border border-white/10 bg-white/5 p-3 text-white focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand">
+                            <option value="cosplay">Cosplay</option>
+                            <option value="corporate">Corporate</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Slug (URL)</label>
+                        <input type="text" id="modal-slug" placeholder="e.g. neon-dreams" class="w-full rounded-lg border border-white/10 bg-white/5 p-3 text-white focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1">Title</label>
+                    <input type="text" id="modal-title" class="w-full rounded-lg border border-white/10 bg-white/5 p-3 text-white focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1">Description</label>
+                    <textarea id="modal-desc" class="w-full h-24 rounded-lg border border-white/10 bg-white/5 p-3 text-white focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"></textarea>
+                </div>
+                <div id="save-first-message" class="hidden border-t border-white/10 pt-4 mt-2">
+                    <p class="text-sm text-slate-400 italic text-center w-full bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                        Save the set first to enable photo uploads. You will be able to upload photos by clicking the edit icon on the saved set.
+                    </p>
+                </div>
+                
+                <div id="upload-section" class="border-t border-white/10 pt-4 mt-2">
+                    <label class="block text-xs font-medium text-brand mb-2">Upload Photo to this Set</label>
+                    <div class="flex items-center justify-center w-full">
+                        <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-700 border-dashed rounded-lg cursor-pointer bg-slate-800 hover:bg-slate-700/50 relative overflow-hidden transition-all group">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6 z-10 pointer-events-none">
+                                <p class="text-sm text-slate-400 group-hover:text-white transition"><span class="font-semibold text-white">Click to upload</span> or drag and drop</p>
+                                <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-300 transition">PNG, JPG or WEBP</p>
+                            </div>
+                            <input id="modal-file" type="file" class="hidden" accept="image/*" multiple />
+                        </label>
+                    </div>
+                    <div id="upload-status" class="mt-2 text-xs text-brand hidden">Uploading...</div>
+                </div>
+
+                <div id="cover-selection-area" class="border-t border-white/10 pt-4 mt-2 hidden">
+                    <label class="block text-xs font-medium text-slate-400 mb-2">Select Featured Cover Image</label>
+                    <div id="cover-grid" class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
+                        <!-- Thumbs rendered here via JS -->
+                    </div>
+                </div>
+
+                <div class="pt-4 flex gap-3">
+                    <button id="modal-delete-btn" class="hidden rounded-lg bg-red-500/20 text-red-400 px-4 py-3 font-semibold transition hover:bg-red-500 hover:text-white">Delete</button>
+                    <button id="modal-save-btn" class="flex-1 w-full rounded-lg bg-brand px-4 py-3 font-semibold text-slate-950 transition hover:bg-sky-400">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/admin/app.js"></script>
+</body>
+</html>

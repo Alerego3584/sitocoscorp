@@ -1,0 +1,20 @@
+{
+  "name": "sitonuovo",
+  "version": "1.0.0",
+  "description": "Modern, Tailwind-powered cosplay and corporate photography showcase designed for Cloudflare Pages.",
+  "main": "index.js",
+  "scripts": {
+    "import": "npm run import:web && npm run sync:galleries",
+    "import:web": "node scripts/import-web-images.js",
+    "import:sync": "npm run import",
+    "process:featured": "node scripts/process-featured-sets.js",
+    "generate:manifests": "node scripts/generate-gallery-manifests.js",
+    "sync:galleries": "npm run process:featured && npm run generate:manifests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.34.4"
+  }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Debug Featured Set Links</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 2rem;
+            background: #0f172a;
+            color: #e2e8f0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 { color: #f0abfc; }
+        .debug-info {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .slug { color: #fbbf24; font-weight: bold; }
+        .url { color: #60a5fa; }
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.5rem 0;
+        }
+        button:hover {
+            background: #4f46e5;
+        }
+        .log { 
+            background: #0f172a; 
+            padding: 0.5rem; 
+            margin: 0.5rem 0;
+            border-left: 3px solid #10b981;
+        }
+    </style>
+</head>
+<body>
+    <h1>Featured Set Link Debugger</h1>
+    
+    <button onclick="inspectDOM()">Inspect DOM Elements</button>
+    <button onclick="testURLGeneration()">Test URL Generation</button>
+    
+    <div id="results"></div>
+
+    <script src="/scripts/cosplay-config.js"></script>
+    
+    <script>
+        function inspectDOM() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h2>DOM Inspection Results</h2>';
+            
+            // Find all featured set figures
+            const figures = document.querySelectorAll('[data-set-slug]');
+            
+            if (figures.length === 0) {
+                results.innerHTML += '<p style="color: #ef4444;">No featured set elements found! Make sure the page has loaded.</p>';
+                return;
+            }
+            
+            figures.forEach((fig, index) => {
+                const slug = fig.dataset.setSlug;
+                const href = fig.dataset.href;
+                const title = fig.querySelector('h3')?.textContent || 'Unknown';
+                
+                const div = document.createElement('div');
+                div.className = 'debug-info';
+                div.innerHTML = `
+                    <strong>${index + 1}. ${title}</strong><br>
+                    Slug: <span class="slug">${slug}</span><br>
+                    URL: <span class="url">${href}</span><br>
+                    Click listener: ${fig.onclick ? 'Attached' : 'None'}
+                `;
+                results.appendChild(div);
+            });
+        }
+        
+        async function testURLGeneration() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h2>URL Generation Test</h2>';
+            
+            try {
+                const response = await fetch('/images/cosplay/featured/manifest.json');
+                const manifest = await response.json();
+                
+                manifest.sets.forEach((set, index) => {
+                    const testUrl = buildSetGalleryUrl(set.slug, 'cosplay');
+                    
+                    const div = document.createElement('div');
+                    div.className = 'debug-info';
+                    div.innerHTML = `
+                        <strong>${index + 1}. ${set.title}</strong><br>
+                        Raw slug: <span class="slug">${set.slug}</span><br>
+                        Generated URL: <span class="url">${testUrl}</span><br>
+                        <a href="${testUrl}" style="color: #10b981;">→ Test Link</a>
+                    `;
+                    results.appendChild(div);
+                });
+                
+            } catch (error) {
+                results.innerHTML += `<p style="color: #ef4444;">Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Helper function (copied from cosplay-config.js for standalone testing)
+        function buildSetGalleryUrl(slug, type) {
+            const safeSlug = slug || '';
+            try {
+                const url = new URL('/set-gallery.html', window.location.origin);
+                url.searchParams.set('set', safeSlug);
+                url.searchParams.set('type', type);
+                return `${url.pathname}${url.search}`;
+            } catch (error) {
+                const encodedSlug = encodeURIComponent(safeSlug);
+                const encodedType = encodeURIComponent(type || 'cosplay');
+                return `/set-gallery.html?set=${encodedSlug}&type=${encodedType}`;
+            }
+        }
+        
+        // Auto-run after short delay to let DOM load
+        setTimeout(() => {
+            const logDiv = document.createElement('div');
+            logDiv.className = 'log';
+            logDiv.textContent = 'Page loaded. Click "Inspect DOM Elements" to see what\'s rendered, or "Test URL Generation" to verify slug encoding.';
+            document.getElementById('results').appendChild(logDiv);
+        }, 1000);
+    </script>
+</body>
+</html>
